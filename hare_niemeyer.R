@@ -1,0 +1,31 @@
+hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg){
+  liczba_glosow = c(kom1 / 100 * okregi[okreg, 1], 
+                    kom2 / 100 * okregi[okreg, 1], 
+                    kom3 / 100 * okregi[okreg, 1], 
+                    kom4 / 100 * okregi[okreg, 1], 
+                    kom5 / 100 * okregi[okreg, 1])
+  hn = c(liczba_glosow[1] / sum(liczba_glosow) * okregi[okreg, 2],
+         liczba_glosow[2] / sum(liczba_glosow) * okregi[okreg, 2],
+         liczba_glosow[3] / sum(liczba_glosow) * okregi[okreg, 2],
+         liczba_glosow[4] / sum(liczba_glosow) * okregi[okreg, 2],
+         liczba_glosow[5] / sum(liczba_glosow) * okregi[okreg, 2])
+  mandaty_integer = matrix(c(as.integer(hn[1]),
+                             as.integer(hn[2]),
+                             as.integer(hn[3]),
+                             as.integer(hn[4]),
+                             as.integer(hn[5])),
+                           ncol = 1, nrow = 5)
+  hn2 = c()
+  for (i in 1:length(hn)) {
+    hn2 = c(hn2, hn[i] - as.integer(hn[i]))
+  }
+  n = length(hn2)
+  granica = sort(hn2, partial = n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1))[n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1)]
+  dod_mandaty = as.matrix(hn2 >= granica)
+  mandaty_integer = cbind(mandaty_integer, dod_mandaty)
+  wynik_hn = matrix(rowSums(mandaty_integer), ncol = 1, nrow = 5)
+  colnames(wynik_hn) = "Hare-Niemeyer"
+  rownames(wynik_hn) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
+  wynik_hn
+}
+hare_niemeyer(37, 25, 16, 12, 10, 39)

@@ -1,4 +1,4 @@
-dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
+sainte_lague = function(kom1, kom2, kom3, kom4, kom5, okreg){
   liczba_glosow = c(kom1 / 100 * okregi[okreg, 1], 
                     kom2 / 100 * okregi[okreg, 1], 
                     kom3 / 100 * okregi[okreg, 1], 
@@ -10,7 +10,7 @@ dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
                     komitet4 = vector(),
                     komitet5 = vector(),
                     stringsAsFactors = FALSE)
-  for (i in 1:(okregi[okreg, 2])){
+  for (i in seq(from = 1, to = 9, by = 2)){
     x = data.frame(komitet1 = liczba_glosow[1] / i,
                    komitet2 = liczba_glosow[2] / i,
                    komitet3 = liczba_glosow[3] / i,
@@ -28,9 +28,9 @@ dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
   trzeci_mandaty = sum(przydzial$komitet3)
   czwarty_mandaty = sum(przydzial$komitet4)
   piaty_mandaty = sum(przydzial$komitet5)
-  wynik_dhont = matrix(c(pierwszy_mandaty, drugi_mandaty, trzeci_mandaty, czwarty_mandaty, piaty_mandaty), ncol = 1, nrow = 5)
-  colnames(wynik_dhont) = "D'Hont"
-  rownames(wynik_dhont) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
-  wynik_dhont
+  wynik_sl = matrix(c(pierwszy_mandaty, drugi_mandaty, trzeci_mandaty, czwarty_mandaty, piaty_mandaty), ncol = 1, nrow = 5)
+  colnames(wynik_sl) = "Sainte-Lague"
+  rownames(wynik_sl) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
+  wynik_sl
 }
-dhont(37, 25, 16, 12, 10, 39)
+sainte_lague(37, 25, 16, 12, 10, 39)
