@@ -1,0 +1,6 @@
+system_dhonta2 = matrix(system_dhonta[ , 1], ncol = 5, nrow = 1)
+colnames(system_dhonta) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
+system_sainte_lague2 = matrix(system_sainte_lague[ , 1], ncol = 5, nrow = 1)
+colnames(system_sainte_lague) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
+system_hare_niemeyer2 = matrix(system_hare_niemeyer[ , 1], ncol = 5, nrow = 1)
+colnames(system_hare_niemeyer) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")

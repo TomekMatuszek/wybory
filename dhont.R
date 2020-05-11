@@ -33,4 +33,3 @@ dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
   rownames(wynik_dhont) = c("I Komitet", "II Komitet", "III Komitet", "IV Komitet", "V Komitet")
   wynik_dhont
 }
-dhont(37, 25, 16, 12, 10, 39)
