@@ -1,6 +1,9 @@
-dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
+dhont = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
     stop("Wprowadzane argumenty muszą być liczbami!")
+  }
+  if (frekwencja > 100 || frekwencja < 0){
+    stop("Frekwencja musi być liczbą z przedziału (0,100)!")
   }
   if (sum(kom1, kom2, kom3, kom4, kom5) > 100){
     stop("Suma poparcia poszczególnych komitetów jest wyższa niż 100%!")
@@ -12,11 +15,11 @@ dhont = function(kom1, kom2, kom3, kom4, kom5, okreg){
     warning(paste("Suma poparcia wszystkich komitetów wynosi", sum(kom1, kom2, kom3, kom4, kom5), "%. \n To oznacza, że", 100 - sum(kom1, kom2, kom3, kom4, kom5), "% głosów została oddana nieważnych lub na komitety, które nie przekroczyły progu wyborczego."))
   }
   
-  liczba_glosow = c(kom1 / 100 * okregi[okreg, 1], 
-                    kom2 / 100 * okregi[okreg, 1], 
-                    kom3 / 100 * okregi[okreg, 1], 
-                    kom4 / 100 * okregi[okreg, 1], 
-                    kom5 / 100 * okregi[okreg, 1])
+  liczba_glosow = c(kom1 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
+                    kom2 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
+                    kom3 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
+                    kom4 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
+                    kom5 / 100 * (frekwencja / 100) * okregi[okreg, 1])
   dane = data.frame(komitet1 = vector(),
                     komitet2 = vector(),
                     komitet3 = vector(),
