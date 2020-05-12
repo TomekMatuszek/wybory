@@ -27,4 +27,4 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   wyniki <<- cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
   wyniki
 }
-wybory(40, 25, 16, 7, 5, 39, 100)
+wybory(40, 25, 16, 5, 5, 39)
