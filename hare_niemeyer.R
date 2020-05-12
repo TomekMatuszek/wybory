@@ -1,4 +1,17 @@
 hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg){
+  if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
+    stop("Wprowadzane argumenty muszą być liczbami!")
+  }
+  if (sum(kom1, kom2, kom3, kom4, kom5) > 100){
+    stop("Suma poparcia poszczególnych komitetów jest wyższa niż 100%!")
+  }
+  if (is.numeric(okreg) == FALSE || round(okreg, 0) != okreg || okreg > 41 || okreg < 1){
+    stop("Wybierz numer okręgu z przedziału liczb całkowitych (1,41)!")
+  }
+  if (sum(kom1, kom2, kom3, kom4, kom5) < 90){
+    warning(paste("Suma poparcia wszystkich komitetów wynosi", sum(kom1, kom2, kom3, kom4, kom5), "%. \n To oznacza, że", 100 - sum(kom1, kom2, kom3, kom4, kom5), "% głosów została oddana nieważnych lub na komitety, które nie przekroczyły progu wyborczego."))
+  }
+  
   liczba_glosow = c(kom1 / 100 * okregi[okreg, 1], 
                     kom2 / 100 * okregi[okreg, 1], 
                     kom3 / 100 * okregi[okreg, 1], 
@@ -15,6 +28,7 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg){
                              as.integer(hn[4]),
                              as.integer(hn[5])),
                            ncol = 1, nrow = 5)
+  
   hn2 = c()
   for (i in 1:length(hn)) {
     hn2 = c(hn2, hn[i] - as.integer(hn[i]))
@@ -22,6 +36,7 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg){
   n = length(hn2)
   granica = sort(hn2, partial = n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1))[n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1)]
   dod_mandaty = as.matrix(hn2 >= granica)
+  
   mandaty_integer = cbind(mandaty_integer, dod_mandaty)
   wynik_hn = matrix(rowSums(mandaty_integer), ncol = 1, nrow = 5)
   colnames(wynik_hn) = "Hare-Niemeyer"
