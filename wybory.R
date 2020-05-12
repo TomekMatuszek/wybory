@@ -1,3 +1,7 @@
+#Argumentami funkcji są wartości procentowe poparcia pięciu największych komitetów wyborczych oraz nr okręgu wyborczego
+#Suma poparcia wszystkich 5 komitetów nie może być większa niż 100%, natomiast gdy jest mniejsza niż 90% - pojawi się ostrzeżenie
+#Numer okręgu wyborczego musi być liczbą całkowitą z przedziału (1,41)
+#Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
 wybory = function(kom1, kom2, kom3, kom4, kom5, okreg){
   if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
     stop("Wprowadzane argumenty muszą być liczbami!")
