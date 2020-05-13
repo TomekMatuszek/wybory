@@ -26,7 +26,7 @@ sainte_lague = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
                     komitet4 = vector(),
                     komitet5 = vector(),
                     stringsAsFactors = FALSE)
-  for (i in seq(from = 1, to = 9, by = 2)){
+  for (i in seq(from = 1, to = 1 + (okregi[okreg, 2] * 2), by = 2)){
     x = data.frame(komitet1 = liczba_glosow[1] / i,
                    komitet2 = liczba_glosow[2] / i,
                    komitet3 = liczba_glosow[3] / i,
@@ -35,6 +35,22 @@ sainte_lague = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
                    stringsAsFactors = FALSE)
     dane = rbind(dane, x)
   }
+  
+    for (i in 1:(okregi[okreg, 2])) {
+      for (j in 1:5) {
+        for (k in 1:(okregi[okreg, 2])) {
+          for (l in 1:5) {
+            if (dane[i, j] == dane[k, l] && (i != k || j != l)){
+              if (j < l){
+                dane[i, j] = dane[i, j] + 0.1
+              } else if (j >= l){
+                dane[k, l] = dane[k, l] + 0.1
+              }
+            }
+          }
+        }
+      }
+    }
   
   dane2 = c(dane$komitet1, dane$komitet2, dane$komitet3, dane$komitet4, dane$komitet5)
   n = length(dane2)

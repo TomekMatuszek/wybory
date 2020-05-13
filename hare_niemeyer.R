@@ -41,16 +41,19 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   dod_mandaty = as.matrix(hn2 >= granica)
   
   if (colSums(mandaty_integer) + colSums(dod_mandaty) != okregi[okreg, 2]){
-    a = 0
+    a <<- 0
     for (i in 1:5) {
       for (j in 1:5) {
         if (dod_mandaty[i, 1] == dod_mandaty[j, 1] && i != j){
-          dod_mandaty[max(c(i, j)), 1] = 0
-          a = a + 1
+          dod_mandaty[min(c(i, j)), 1] = 0
+          a <<- a + 1
         }
-        if (a > 0){
+        if (a > 2){
           break
         }
+      }
+      if (a > 2){
+        break
       }
     }
   }
