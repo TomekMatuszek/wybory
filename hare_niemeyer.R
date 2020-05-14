@@ -20,11 +20,11 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
                     kom3 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
                     kom4 / 100 * (frekwencja / 100) * okregi[okreg, 1], 
                     kom5 / 100 * (frekwencja / 100) * okregi[okreg, 1])
-  hn = c(liczba_glosow[1] / sum(liczba_glosow) * okregi[okreg, 2],
-         liczba_glosow[2] / sum(liczba_glosow) * okregi[okreg, 2],
-         liczba_glosow[3] / sum(liczba_glosow) * okregi[okreg, 2],
-         liczba_glosow[4] / sum(liczba_glosow) * okregi[okreg, 2],
-         liczba_glosow[5] / sum(liczba_glosow) * okregi[okreg, 2])
+  hn = c(liczba_glosow[1] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2],
+         liczba_glosow[2] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2],
+         liczba_glosow[3] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2],
+         liczba_glosow[4] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2],
+         liczba_glosow[5] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2])
   mandaty_integer = matrix(c(as.integer(hn[1]),
                              as.integer(hn[2]),
                              as.integer(hn[3]),
@@ -40,12 +40,12 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   granica = sort(hn2, partial = n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1))[n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1)]
   dod_mandaty = as.matrix(hn2 >= granica)
   
-  if (colSums(mandaty_integer) + colSums(dod_mandaty) != okregi[okreg, 2]){
+  if (colSums(mandaty_integer) + colSums(dod_mandaty) > okregi[okreg, 2]){
     a <<- 0
     for (i in 1:5) {
       for (j in 1:5) {
-        if (dod_mandaty[i, 1] == dod_mandaty[j, 1] && i != j){
-          dod_mandaty[min(c(i, j)), 1] = 0
+        if (hn2[i] == hn2[j] && (i != j) == TRUE){
+          dod_mandaty[max(c(i, j)), 1] = FALSE
           a <<- a + 1
         }
         if (a > 2){
