@@ -44,7 +44,7 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
     a <<- 0
     for (i in 1:5) {
       for (j in 1:5) {
-        if (hn2[i] == hn2[j] && (i != j) == TRUE){
+        if (hn2[i] == hn2[j] && (i != j) == TRUE && any(c(hn2[i], hn2[j]) == granica) == TRUE){
           dod_mandaty[max(c(i, j)), 1] = FALSE
           a <<- a + 1
         }
