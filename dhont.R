@@ -43,7 +43,7 @@ dhont = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
           if (dane[i, j] == dane[k, l] && (i != k || j != l)){
             if (j < l){
               dane[i, j] = dane[i, j] + 0.1
-            } else if (j >= l){
+            } else if (j > l){
               dane[k, l] = dane[k, l] + 0.1
             }
           }
