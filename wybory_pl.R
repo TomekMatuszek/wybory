@@ -20,6 +20,12 @@ wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   m3 = matrix(c(dh, sl, hn), ncol = 3, nrow = 5)
   rownames(m3) = c("Komitet I", "Komitet II", "Komitet III", "Komitet IV", "Komitet V")
   colnames(m3) = c("D'Hont", "Sainte-Lague", "Hare-Niemeyer")
+  
+  barplot(m3, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
+          ylim = c(0,250))
+  abline(h = 230, col = "red", lwd = 2)
+  text(18, 240, "230", col = "red")
+  
   m3
 }
-wybory_pl(42, 31, 12, 9, 6)
+wybory_pl(35, 31, 15, 10, 6)

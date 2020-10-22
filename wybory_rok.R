@@ -1,5 +1,5 @@
 wybory_rok = function(wyniki){
-  UseMethod("wybory_2019")
+  UseMethod("wybory_rok")
 }
 
 wybory_rok.macierz_wynikow = function(wyniki){
@@ -30,6 +30,13 @@ wybory_rok.macierz_wynikow = function(wyniki){
   wyniki_man = matrix(c(dh_sum, sl_sum, hn_sum), ncol = 3, nrow = 5)
   colnames(wyniki_man) = c("D'Hont", "Sainte-Lague", "Hare-Niemeyer")
   rownames(wyniki_man) = c("Komitet I", "Komitet II", "Komitet III", "Komitet IV", "Komitet V")
+  
+  barplot(wyniki_man, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
+          ylim = c(0,250))
+  abline(h = 230, col = "red", lwd = 2)
+  text(18, 240, "230", col = "red")
+  
   wyniki_man
 }
 wybory_rok(okregi_wyniki)
+

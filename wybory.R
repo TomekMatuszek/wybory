@@ -25,6 +25,9 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   system_hare_niemeyer <<- as.matrix(hare_niemeyer(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja))
   
   wyniki <<- cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
+  
+  barplot(wyniki, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"))
+  
   wyniki
 }
-wybory(40, 25, 16, 5, 5, 39)
+wybory(35, 29, 25, 6, 5, 39)
