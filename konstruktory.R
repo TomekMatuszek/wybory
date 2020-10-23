@@ -5,7 +5,7 @@ okregi = matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
 colnames(okregi) = c("Liczba wyborców", "Liczba mandatów")
 
 #Konstruktor wynikow tworzy macierz wynikow o strukturze pozwalajacej uzyc funkcji przydzielajacych mandaty
-#Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony sejm.gov.pl
+#Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
 konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   okregi_wyniki <<- read.csv(nazwa, sep = ";")
