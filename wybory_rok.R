@@ -38,7 +38,7 @@ wybory_rok.macierz_wynikow = function(wyniki){
   barplot(wyniki_man, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
           ylim = c(0,250), ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
           main = "Podzial mandatów w Sejmie")
-  abline(h = 230, col = "red", lwd = 2)
+  abline(h = 230, col = "red", lwd = 2, , lty = 2)
   abline(h = 460 * (mean(wyniki[ ,1]) / 100), col = "orange", lwd = 1.5)
   abline(h = 460 * (mean(wyniki[ ,2]) / 100), col = "black", lwd = 1.5)
   abline(h = 460 * (mean(wyniki[ ,3]) / 100), col = "darkgreen", lwd = 1.5)
