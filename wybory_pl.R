@@ -1,3 +1,9 @@
+#Funkcja przeprowadza funkcje wybory dla wszystkich okregow i sumuje wyniki
+#Zachodzi tu hipotetyczna sytuacja rownomiernego rozkladu glosów w skali kraju
+#Argumentami sa kolejno wyniki pieciu komitetów wyborczych oraz frekwencja
+#Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
+#Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
+#Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do wszystkich mandatow
 wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   m = matrix( , ncol = 1, nrow = 5)
   for (i in 1:nrow(okregi)) {
@@ -22,8 +28,14 @@ wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   colnames(m3) = c("D'Hont", "Sainte-Lague", "Hare-Niemeyer")
   
   barplot(m3, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
-          ylim = c(0,250))
+          ylim = c(0,250), ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
+          main = "Podzial mandatów w Sejmie")
   abline(h = 230, col = "red", lwd = 2)
+  abline(h = 460 * (kom1 / 100), col = "orange", lwd = 1.5)
+  abline(h = 460 * (kom2 / 100), col = "black", lwd = 1.5)
+  abline(h = 460 * (kom3 / 100), col = "darkgreen", lwd = 1.5)
+  abline(h = 460 * (kom4 / 100), col = "blue", lwd = 1.5)
+  abline(h = 460 * (kom5 / 100), col = "red", lwd = 1.5)
   text(18, 240, "230", col = "red")
   
   m3
