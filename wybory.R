@@ -3,6 +3,8 @@
 #Numer okręgu wyborczego musi być liczbą całkowitą z przedziału (1,41)
 #Użytkownik może także zdefiniować frekwencję w danym okręgu, domyślnie jest ona jednak ustawiona na 100%.
 #Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
+#Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
+#Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do dostepnych mandatow
 wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
     stop("Wprowadzane argumenty muszą być liczbami!")
@@ -26,7 +28,17 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   wyniki <<- cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
   
-  barplot(wyniki, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"))
+  barplot(wyniki, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
+          ylim = c(0, okregi[okreg, 2]), border = c("orange", "black", "darkgreen", "blue", "red"),
+          ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
+          main = c("Podzial mandatów w okregu", okreg))
+  abline(h = okregi[okreg, 2] * (kom1 / 100), col = "orange", lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom2 / 100), col = "black", lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom3 / 100), col = "darkgreen", lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom4 / 100), col = "blue", lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom5 / 100), col = "red", lwd = 1.5)
+  legend("top", c("Kom1", "Kom2", "Kom3", "Kom4", "Kom5"), ncol = 5,
+         fill = c("orange", "black", "darkgreen", "blue", "red"))
   
   wyniki
 }
