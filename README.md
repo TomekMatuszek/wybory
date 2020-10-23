@@ -7,5 +7,7 @@ Funkcja `wybory_rok` oblicza realny rozkład mandatów w Sejmie dla procentowych
 
 Dostępne są także funkcje składowe: `dhont`, `sainte_lague` oraz `hare_niemeyer`.
 
+![](wyb_2019.png)
+
 # Uwagi
 Funkcja niestety nie zawsze radzi sobie w przypadku potrójnych remisów - sytuacji gdy trzy komitety osiągnęły dokładnie ten sam wynik. Z tego względu, celem uniknięcia błędów staraj się różnicować wyniki choćby o ułamki procentów. Zwykłe remisy są rozstrzygane poprawnie.
