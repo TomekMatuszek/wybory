@@ -7,6 +7,7 @@ Funkcja `wybory_rok` oblicza realny rozkład mandatów w Sejmie dla procentowych
 
 Dostępne są także funkcje składowe: `dhont`, `sainte_lague` oraz `hare_niemeyer`.
 
+Wygenerowany za pomoca funkcji `wybory_rok` wykres obrazujacy rozklad mandatow w Sejmie po wyborach parlamentarnych 2019 w zaleznosci od wybranej metody przeliczania. Czerwona przerywana linia oznacza liczbe mandatów potrzebnych do uzyskania wiekszosci w Sejmie, natomiast ciensze, kolorowe linie obrazuja realne poparcie danych komitetów w przeliczeniu na sejmowe mandaty:
 ![](wyb_2019.png)
 
 # Uwagi
