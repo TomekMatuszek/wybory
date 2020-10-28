@@ -12,6 +12,7 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   okregi_wyniki <<- read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
   okregi_wyniki <<- sapply(okregi_wyniki, as.numeric)
   okregi_wyniki <<- as.data.frame(okregi_wyniki)
+  #okregi_wyniki <<- read.csv(nazwa, sep = ";")
   okregi_wyniki <<- matrix(c(okregi_wyniki[ ,kol1], okregi_wyniki[ ,kol2], okregi_wyniki[ ,kol3], 
                            okregi_wyniki[ ,kol4], okregi_wyniki[ ,kol5]),
                          nrow = 41, ncol = 5)
