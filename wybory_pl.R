@@ -30,7 +30,7 @@ wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   barplot(m3, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
           ylim = c(0,250), ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
           main = "Podzial mandatów w Sejmie")
-  abline(h = 230, col = "red", lwd = 2)
+  abline(h = 230, col = "red", lwd = 2, lty = 2)
   abline(h = 460 * (kom1 / 100), col = "orange", lwd = 1.5)
   abline(h = 460 * (kom2 / 100), col = "black", lwd = 1.5)
   abline(h = 460 * (kom3 / 100), col = "darkgreen", lwd = 1.5)

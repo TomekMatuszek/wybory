@@ -17,3 +17,4 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
 }
 konstruktor_wynikow("sejm_wyniki.csv", 9, 11, 12, 14, 16)
 konstruktor_wynikow("sejm_wyniki2.csv", 9, 10, 13, 15, 16)
+okregi_wyniki
