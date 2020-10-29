@@ -28,8 +28,10 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   wyniki <<- cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
   
-  barplot(wyniki, beside = TRUE, col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
-          ylim = c(0, okregi[okreg, 2]), border = c("#DF536B", "black", "#61D04F", "#2297E6", "#CD0BBC"),
+  barplot(wyniki, beside = TRUE, 
+          col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
+          ylim = c(0, okregi[okreg, 2]), 
+          border = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
           ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
           main = c("Podzial mandatów w okregu", okreg))
   abline(h = okregi[okreg, 2] * (kom1 / 100), 

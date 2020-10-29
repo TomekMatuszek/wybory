@@ -27,8 +27,11 @@ wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   rownames(m3) = c("Komitet I", "Komitet II", "Komitet III", "Komitet IV", "Komitet V")
   colnames(m3) = c("D'Hont", "Sainte-Lague", "Hare-Niemeyer")
   
-  barplot(m3, beside = TRUE, col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
-          ylim = c(0,250), ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
+  barplot(m3, beside = TRUE, 
+          col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
+          ylim = c(0,250), ylab = "Liczba mandatów", 
+          xlab = "Metoda obliczania podzialu mandatów",
+          border = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
           main = "Podzial mandatów w Sejmie")
   abline(h = 230, col = "red", lwd = 2, lty = 2)
   abline(h = 460 * (kom1 / 100), 

@@ -35,8 +35,11 @@ wybory_rok.macierz_wynikow = function(wyniki){
   colnames(wyniki_man) = c("D'Hont", "Sainte-Lague", "Hare-Niemeyer")
   rownames(wyniki_man) = c("Komitet I", "Komitet II", "Komitet III", "Komitet IV", "Komitet V")
   
-  barplot(wyniki_man, beside = TRUE, col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
-          ylim = c(0,250), ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
+  barplot(wyniki_man, beside = TRUE, 
+          col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
+          ylim = c(0,250), ylab = "Liczba mandatów", 
+          xlab = "Metoda obliczania podzialu mandatów",
+          border = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
           main = "Podzial mandatów w Sejmie")
   abline(h = 230, col = "red", lwd = 2, , lty = 2)
   abline(h = 460 * (mean(wyniki[ ,1]) / 100), 
