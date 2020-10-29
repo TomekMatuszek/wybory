@@ -8,11 +8,12 @@ colnames(okregi) = c("Liczba wyborców", "Liczba mandatów")
 #Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
 library(readxl)
+library(stringr)
 konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
-  okregi_wyniki <<- read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
-  okregi_wyniki <<- sapply(okregi_wyniki, as.numeric)
-  okregi_wyniki <<- as.data.frame(okregi_wyniki)
-  #okregi_wyniki <<- read.csv(nazwa, sep = ";")
+  #okregi_wyniki <<- read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+  #okregi_wyniki <<- sapply(okregi_wyniki, as.numeric)
+  #okregi_wyniki <<- as.data.frame(okregi_wyniki)
+  okregi_wyniki <<- read.csv(nazwa, sep = ";")
   okregi_wyniki <<- matrix(c(okregi_wyniki[ ,kol1], okregi_wyniki[ ,kol2], okregi_wyniki[ ,kol3], 
                            okregi_wyniki[ ,kol4], okregi_wyniki[ ,kol5]),
                          nrow = 41, ncol = 5)
@@ -26,7 +27,16 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
                                 wynik = c(okregi_wyniki[ ,1], okregi_wyniki[ ,2], okregi_wyniki[ ,3],
                                           okregi_wyniki[ ,4], okregi_wyniki[ ,5]) )
 }
-konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
-konstruktor_wynikow("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16)
+konstruktor_wynikow("sejm_wyniki2019.csv", 9, 11, 12, 14, 16)
+konstruktor_wynikow("sejm_wyniki2015.csv", 9, 10, 13, 15, 16)
 okregi_wyniki
 okregi_wyniki_df
+
+
+if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == "xls"){
+  okregi_wyniki <<- read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+  okregi_wyniki <<- sapply(okregi_wyniki, as.numeric)
+  okregi_wyniki <<- as.data.frame(okregi_wyniki)
+} else if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == "csv"){
+  okregi_wyniki <<- read.csv(nazwa, sep = ";")
+}

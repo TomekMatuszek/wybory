@@ -28,17 +28,22 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   wyniki <<- cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
   
-  barplot(wyniki, beside = TRUE, col = c("orange", "black", "darkgreen", "blue", "red"),
-          ylim = c(0, okregi[okreg, 2]), border = c("orange", "black", "darkgreen", "blue", "red"),
+  barplot(wyniki, beside = TRUE, col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
+          ylim = c(0, okregi[okreg, 2]), border = c("#DF536B", "black", "#61D04F", "#2297E6", "#CD0BBC"),
           ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
           main = c("Podzial mandatów w okregu", okreg))
-  abline(h = okregi[okreg, 2] * (kom1 / 100), col = "orange", lwd = 1.5)
-  abline(h = okregi[okreg, 2] * (kom2 / 100), col = "black", lwd = 1.5)
-  abline(h = okregi[okreg, 2] * (kom3 / 100), col = "darkgreen", lwd = 1.5)
-  abline(h = okregi[okreg, 2] * (kom4 / 100), col = "blue", lwd = 1.5)
-  abline(h = okregi[okreg, 2] * (kom5 / 100), col = "red", lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom1 / 100), 
+         col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3")[1], lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom2 / 100), 
+         col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3")[2], lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom3 / 100), 
+         col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3")[3], lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom4 / 100), 
+         col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3")[4], lwd = 1.5)
+  abline(h = okregi[okreg, 2] * (kom5 / 100), 
+         col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3")[5], lwd = 1.5)
   legend("top", c("Kom1", "Kom2", "Kom3", "Kom4", "Kom5"), ncol = 5,
-         fill = c("orange", "black", "darkgreen", "blue", "red"))
+         fill = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"))
   
   wyniki
 }
