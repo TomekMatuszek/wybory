@@ -22,6 +22,7 @@ Wygenerowany za pomoca funkcji `wybory_rok` wykres obrazujacy rozklad mandatow w
 ## Wykres pudekowy
 Funkcja `konstruktor_wynikow` tworzy także ramke danych o nazwie "okregi_wyniki_df". Możesz jej użyć jako argument w funkcji `wykres_wyniki`, aby stworzyć wykres pudelkowy wizualizujacy podstawowe statystyki dot. poparcia komitetów wyborczych w danym roku.
 Oprócz standardowych informacji wykresu pudelkowego (np. mediana czy zakres miedzykwantylowy), widoczne beda wyniki każdego komitetu w poszczególnych okregach.
+
 ![](wykres.png)
 
 # Uwagi
