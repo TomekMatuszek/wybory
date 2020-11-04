@@ -19,18 +19,10 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
                          nrow = 41, ncol = 5)
   colnames(okregi_wyniki) <<- c("Kom1", "Kom2", "Kom3", "Kom4", "Kom5")
   okregi_wyniki <<- structure(okregi_wyniki, class = "macierz_wynikow")
-  
-  okregi_wyniki_df <<- data.frame(komitet = c(rep("Kom1", times = 41), rep("Kom2", times = 41),
-                                            rep("Kom3", times = 41), rep("Kom4", times = 41),
-                                            rep("Kom5", times = 41)),
-                                okreg = c(rep(1:41, times = 5)),
-                                wynik = c(okregi_wyniki[ ,1], okregi_wyniki[ ,2], okregi_wyniki[ ,3],
-                                          okregi_wyniki[ ,4], okregi_wyniki[ ,5]) )
 }
 konstruktor_wynikow("sejm_wyniki2019.csv", 9, 11, 12, 14, 16)
 konstruktor_wynikow("sejm_wyniki2015.csv", 9, 10, 13, 15, 16)
 okregi_wyniki
-okregi_wyniki_df
 
 
 if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == "xls"){
