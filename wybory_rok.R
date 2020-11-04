@@ -56,4 +56,5 @@ wybory_rok.macierz_wynikow = function(wyniki){
   
   wyniki_man
 }
-wybory_rok(okregi_wyniki)
+wybory_rok(wybory_2019)
+wybory_rok(wybory_2015)
