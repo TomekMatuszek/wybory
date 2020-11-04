@@ -21,7 +21,7 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   okregi_wyniki = structure(okregi_wyniki, class = "macierz_wynikow")
   okregi_wyniki
 }
-wybory_2019 = konstruktor_wynikow("sejm_wyniki2019.csv", 9, 11, 12, 14, 16)
+wybory_2019 = konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
 wybory_2015 = konstruktor_wynikow("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16)
 okregi_wyniki
 
