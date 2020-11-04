@@ -5,7 +5,7 @@
 #Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
 #Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
 #Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do dostepnych mandatow
-wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
+wybory_okreg = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
     stop("Wprowadzane argumenty muszą być liczbami!")
   }
@@ -49,4 +49,4 @@ wybory = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   wyniki
 }
-wybory(35, 29, 25, 6, 5, 39)
+wybory_okreg(35, 29, 25, 6, 5, 39)
