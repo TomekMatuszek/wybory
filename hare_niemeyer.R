@@ -36,6 +36,11 @@ hare_niemeyer = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   for (i in 1:length(hn)) {
     hn2 = c(hn2, hn[i] - as.integer(hn[i]))
   }
+  brak = okregi[okreg,2] - colSums(mandaty_integer)
+  if (brak > 5){
+    mandaty_integer = mandaty_integer + 1
+    brak = okregi[okreg,2] - colSums(mandaty_integer)
+  }
   n = length(hn2)
   granica = sort(hn2, partial = n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1))[n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1)]
   dod_mandaty = as.matrix(hn2 >= granica)
