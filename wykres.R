@@ -1,7 +1,13 @@
 library(ggplot2)
 
 wykres_wyniki = function(nazwa, kol1, kol2, kol3, kol4, kol5){
-  okregi_wyniki_df = read.csv(nazwa, sep = ";")
+  if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
+    okregi_wyniki_df = read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+    okregi_wyniki_df = sapply(okregi_wyniki_df, as.numeric)
+    okregi_wyniki_df = as.data.frame(okregi_wyniki_df)
+  } else if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
+    okregi_wyniki_df = read.csv(nazwa, sep = ";")
+  }
   okregi_wyniki_df = data.frame(komitet = c(rep("Kom1", times = 41), rep("Kom2", times = 41),
                                             rep("Kom3", times = 41), rep("Kom4", times = 41),
                                             rep("Kom5", times = 41)),
@@ -15,4 +21,5 @@ wykres_wyniki = function(nazwa, kol1, kol2, kol3, kol4, kol5){
     scale_color_manual(values = c("orange", "black", "darkgreen", "blue", "red")) +
     labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia")
 }
-wykres_wyniki("sejm_wyniki2019.csv", 9, 11, 12, 14, 16)
+wykres_wyniki("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
+wykres_wyniki("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16)
