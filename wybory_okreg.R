@@ -52,4 +52,4 @@ wybory_okreg = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   wyniki
 }
-wybory_okreg(30.2, 29.64, 7.77, 7.30, 6.07, 4)
+wybory_okreg(30, 29, 10, 7, 6, 5)
