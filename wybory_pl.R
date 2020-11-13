@@ -5,6 +5,9 @@
 #Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
 #Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do wszystkich mandatow
 wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
+  if (exists("okregi") == FALSE){
+    stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
+  }
   m = matrix( , ncol = 1, nrow = 5)
   for (i in 1:nrow(okregi)) {
     m2 = dhont(kom1, kom2, kom3, kom4, kom5, i, frekwencja = 100)

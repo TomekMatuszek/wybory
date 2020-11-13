@@ -1,4 +1,7 @@
 sainte_lague = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
+  if (exists("okregi") == FALSE){
+    stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
+  }
   if (is.numeric(c(kom1, kom2, kom3, kom4, kom5)) == FALSE){
     stop("Wprowadzane argumenty muszą być liczbami!")
   }

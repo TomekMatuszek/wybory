@@ -1,14 +1,26 @@
+library(readxl)
+library(stringr)
 #Ponizsze linijki kodu tworza macierz okregow wyborczych
 #Zawiera ona liczbe wyborcow w danym okregu oraz przypadajacych na niego mandatow
-okregi = read.csv("okregi_sejm.csv", sep = ";")
-okregi = matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
-colnames(okregi) = c("Liczba wyborców", "Liczba mandatów")
+konstruktor_okregow = function(nazwa){
+  if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
+    okregi = read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+    okregi = sapply(okregi_dane, as.numeric)
+    okregi = as.data.frame(okregi_dane)
+  } else if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
+    okregi = read.csv(nazwa, sep = ";")
+  } else{
+    stop("Wybrano nie obslugiwany format pliku!")
+  }
+  okregi <<- matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
+  colnames(okregi) <<- c("Liczba wyborców", "Liczba mandatów")
+  message("Stworzono obiekt o nazwie 'okregi'")
+}
+konstruktor_okregow("okregi_sejm.csv")
 
 #Konstruktor wynikow tworzy macierz wynikow o strukturze pozwalajacej uzyc funkcji przydzielajacych mandaty
 #Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
-library(readxl)
-library(stringr)
 konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
@@ -16,6 +28,8 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
     okregi_wyniki = as.data.frame(okregi_wyniki)
   } else if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi_wyniki = read.csv(nazwa, sep = ";")
+  } else{
+    stop("Wybrano nie obslugiwany format pliku!")
   }
   okregi_wyniki = matrix(c(okregi_wyniki[ ,kol1], okregi_wyniki[ ,kol2], okregi_wyniki[ ,kol3], 
                            okregi_wyniki[ ,kol4], okregi_wyniki[ ,kol5]),

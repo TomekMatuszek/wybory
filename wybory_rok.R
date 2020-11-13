@@ -7,6 +7,9 @@ wybory_rok = function(wyniki){
 }
 
 wybory_rok.macierz_wynikow = function(wyniki){
+  if (exists("okregi") == FALSE){
+    stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
+  }
   dh_mx = matrix( ,nrow = 5, ncol = 1)
   for (i in 1:nrow(wyniki)) {
     dh = dhont(wyniki[i, 1], wyniki[i, 2], wyniki[i, 3], 
