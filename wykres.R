@@ -1,4 +1,6 @@
 library(ggplot2)
+library(stringr)
+library(readxl)
 
 wykres_wyniki = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   if(str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
@@ -19,7 +21,9 @@ wykres_wyniki = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   ggplot(data = okregi_wyniki_df, aes(x = komitet, y = wynik, color = komitet)) + 
     geom_boxplot(color = "black") + geom_jitter(size = 2, alpha = 0.3, width = 0.3) +
     scale_color_manual(values = c("orange", "black", "darkgreen", "blue", "red")) +
-    labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia")
+    labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia") +
+    ggtitle("Rozklad wyników poszczególnych komitetów w okregach wyborczych") +
+    theme(plot.title = element_text(hjust = 0.5))
 }
 wykres_wyniki("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
 wykres_wyniki("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16)
