@@ -33,7 +33,7 @@ wybory_okreg = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   
   barplot(wyniki, beside = TRUE, 
           col = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
-          ylim = c(0, okregi[okreg, 2]), 
+          ylim = c(0, max(wyniki) + 2), 
           border = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3"),
           ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
           main = c("Podzial mandatów w okregu", okreg))

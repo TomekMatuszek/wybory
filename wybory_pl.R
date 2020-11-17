@@ -51,4 +51,4 @@ wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   
   m3
 }
-wybory_pl(28, 26, 19, 9.1, 9)
+wybory_pl(33, 24, 13, 9, 7)
