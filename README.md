@@ -1,6 +1,14 @@
 # Wstep
 Ten zestaw funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** lub **Hare-Niemeyera**. Okreslajac wyniki procentowe dla poszczególnych komitetów lub korzystajac z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladalyby sie mandaty na poziomie okregów lub calego kraju.
 
+Przed rozpoczeciem korzystania z wlasciwych funkcji tego pakietu, musisz pobrać ze strony PKW aktualny plik CSV zawierajacy dane dotyczace okregów wyborczych w Polsce. Bez tych informacji (liczby mandatów oraz wyborców w okregu) inne funkcje nie beda dzialaly poprawnie.
+Link do aktualnych (2019) danych o okregach wyborczych do Sejmu: [LINK](https://sejmsenat2019.pkw.gov.pl/sejmsenat2019/data/csv/okregi_sejm_csv.zip)
+Nastepnie należy użyć funkcji `konstruktor_okregow` wpisujac nazwe pobranego i rozpakowanego pliku. Nie zwróci ona żadnego wyniku, wyswietli jedynie komunikat "Stworzono obiekt o nazwie 'okregi'".
+
+```r
+konstruktor_okregow("okregi_sejm.csv")
+```
+
 ## Funkcja "wybory_okreg"
 Użyj funkcji `wybory_okreg`, wpisz poparcie dla 5 komitetów wyborczych oraz wybierz numer okręgu wyborczego, aby zobaczyć jak rozkładałyby się w takiej sytuacji mandaty pomiędzy komitetami w zależności od zastosowanej metody podzialu mandatów. Jako siódmą zmienną możesz także ustalić frekwencję wyborczą - domyślnie ustawiona jest ona na 100%.
 Funkcja zwraca wynik w formie macierzy w której każda kolumna zawiera liczbę mandatów uzyskanych przez komitet wg danej metody. Zobaczysz także wygenerowany wykres slupkowy. Poziome linie wyznaczaja realne poparcie komitetów w odniesieniu do liczby mandatów dostepnych w danym okregu wyborczym.
@@ -25,7 +33,7 @@ Funkcja `wybory_rok` oblicza realny rozkład mandatów w Sejmie dla procentowych
 Funkcja `konstruktor_wynikow` zwraca obiekt o nazwie "okregi_wyniki".
 
 **Przyklad:** 
-1. Pobranie pliku CSV z wynikami wyborów parlamentarnych w 2019 roku - [link](https://sejmsenat2019.pkw.gov.pl/sejmsenat2019/data/csv/wyniki_gl_na_listy_po_okregach_sejm_csv.zip)
+1. Pobranie pliku CSV z wynikami wyborów parlamentarnych w 2019 roku - [LINK](https://sejmsenat2019.pkw.gov.pl/sejmsenat2019/data/csv/wyniki_gl_na_listy_po_okregach_sejm_csv.zip)
 2. Rozpakowanie pliku .zip w wybranym folderze.
 3. Przegladniecie pliku w programie obsugujacym arkusze kalkulacyjne; zidentyfikowanie w których kolumnach arkusza znajduja sie wyniki interesujacych nas komitetów.
 4. Użycie poniższego kodu.
