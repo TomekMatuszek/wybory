@@ -9,7 +9,7 @@ Funkcja zwraca wynik w formie macierzy w której każda kolumna zawiera liczbę 
 wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4)
 ```
 
-![](wyborywykres_wykres.png)
+![](wyboryokreg_wykres.png)
 
 ## Funkcja "wybory_pl"
 Możesz użyć także funkcji `wybory_pl`, która symuluje rozkład mandatów w Sejmie różnymi metodami w hipotetycznym przypadku równomiernego rozkładu głosów na partie w każdym okręgu. Jako argumenty należy podać poparcie poszczególnych komitetów oraz ewentualnie frekwencję (domyślnie 100%). Funkcja nie uwzględnia jednak na ten moment ograniczenia w postaci 5-procentowego progu wyborczego dla komitetu - mandaty dostanie każda partia której one przysługują, niezależnie od wyniku ogólnopolskiego. Tutaj także rozklad mandatów zostanie przedstawiony dodatkowo w formie wykresów slupkowych. Ciagle kolorowe linie wyznaczaja realne poparcie komitetów w przeliczeniu na mandaty poselskie, natomiast czerwona linia przerywana ilustruje próg 231 mandatów - tyle ile jest potrzebne do samodzielnych rzadów w parlamencie.
