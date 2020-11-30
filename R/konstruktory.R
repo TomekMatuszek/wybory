@@ -1,6 +1,15 @@
-#Ponizsze linijki kodu tworza macierz okregow wyborczych
-#Zawiera ona liczbe wyborcow w danym okregu oraz przypadajacych na niego mandatow
+#' Konstruktor macierzy okregow wyborczych
+#'
+#' @description Funkcja tworzy macierz, w ktorej znajduja sie informacje dotyczace
+#' okregow wyborczych - liczby ludnosci oraz dostepnych mandatow.
+#'
+#' @param nazwa sciezka do pliku CSV lub XLS pobranego ze strony PKW
+#'
+#' @return macierz o nazwie 'okregi'
 #' @export
+#'
+#' @examples
+#' konstruktor_okregow("okregi_sejm.csv")
 konstruktor_okregow = function(nazwa){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
@@ -20,7 +29,6 @@ konstruktor_okregow("okregi_sejm.csv")
 #Konstruktor wynikow tworzy macierz wynikow o strukturze pozwalajacej uzyc funkcji przydzielajacych mandaty
 #Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
-#' @export
 konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")

@@ -12,3 +12,4 @@ wybory_rok(wybory_2015)
 
 wykres_wyniki("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
 wykres_wyniki("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16)
+?konstruktor_okregow
