@@ -2,19 +2,19 @@
 % Please edit documentation in R/konstruktory.R
 \name{konstruktor_okregow}
 \alias{konstruktor_okregow}
-\title{Konstruktor macierzy okregów wyborczych}
+\title{Konstruktor macierzy okregow wyborczych}
 \usage{
 konstruktor_okregow(nazwa)
 }
 \arguments{
-\item{nazwa}{scieżka do pliku CSV lub XLS pobranego ze strony PKW}
+\item{nazwa}{sciezka do pliku CSV lub XLS pobranego ze strony PKW}
 }
 \value{
 macierz o nazwie 'okregi'
 }
 \description{
-Funkcja tworzy macierz, w której znajduja sie informacje dotyczace
-okregów wyborczych - liczby ludnosci oraz dostepnych mandatów.
+Funkcja tworzy macierz, w ktorej znajduja sie informacje dotyczace
+okregow wyborczych - liczby ludnosci oraz dostepnych mandatow.
 }
 \examples{
 konstruktor_okregow("okregi_sejm.csv")
