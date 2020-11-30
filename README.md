@@ -1,4 +1,15 @@
-# Wstep
+# Pakiet 'wybory'
+
+## Instalacja
+Aby pobrać ten pakiet, użyj poniższego kodu aby polaczyć sie z repozytorium GitHub.
+
+```r
+install.packages("remotes")
+remotes::install_github("TomekMatuszek/wybory")
+library(wybory)
+```
+
+## Wstep
 Ten zestaw funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** lub **Hare-Niemeyera**. Okreslajac wyniki procentowe dla poszczególnych komitetów lub korzystajac z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladalyby sie mandaty na poziomie okregów lub calego kraju.
 
 Przed rozpoczeciem korzystania z wlasciwych funkcji tego pakietu, **musisz pobrać** ze strony PKW aktualny plik CSV zawierajacy dane dotyczace okregów wyborczych w Polsce. Bez tych informacji (liczby mandatów oraz wyborców w okregu) inne funkcje nie beda dzialaly poprawnie.
@@ -60,3 +71,4 @@ wykres_wyniki("sejm_wyniki2019.csv", 9, 11, 12, 14, 16)
 # Uwagi
 - Funkcja niestety nie zawsze radzi sobie w przypadku potrójnych remisów - sytuacji gdy trzy komitety osiągnęły dokładnie ten sam wynik. Z tego względu, celem uniknięcia błędów staraj się różnicować wyniki choćby o ułamki procentów. Zwykłe remisy są rozstrzygane poprawnie.
 - Dostępne są także funkcje składowe: `dhont`, `sainte_lague` oraz `hare_niemeyer`.
+- Na ten moment funkcje dzialaja jedynie w sytuacji gdy do Sejmu dostanie sie 5 komitetów!
