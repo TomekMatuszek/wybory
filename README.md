@@ -1,8 +1,10 @@
 # Wstep
 Ten zestaw funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** lub **Hare-Niemeyera**. Okreslajac wyniki procentowe dla poszczególnych komitetów lub korzystajac z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladalyby sie mandaty na poziomie okregów lub calego kraju.
 
-Przed rozpoczeciem korzystania z wlasciwych funkcji tego pakietu, musisz pobrać ze strony PKW aktualny plik CSV zawierajacy dane dotyczace okregów wyborczych w Polsce. Bez tych informacji (liczby mandatów oraz wyborców w okregu) inne funkcje nie beda dzialaly poprawnie.
+Przed rozpoczeciem korzystania z wlasciwych funkcji tego pakietu, **musisz pobrać** ze strony PKW aktualny plik CSV zawierajacy dane dotyczace okregów wyborczych w Polsce. Bez tych informacji (liczby mandatów oraz wyborców w okregu) inne funkcje nie beda dzialaly poprawnie.
+
 Link do aktualnych (2019) danych o okregach wyborczych do Sejmu: [LINK](https://sejmsenat2019.pkw.gov.pl/sejmsenat2019/data/csv/okregi_sejm_csv.zip)
+
 Nastepnie należy użyć funkcji `konstruktor_okregow` wpisujac nazwe pobranego i rozpakowanego pliku. Nie zwróci ona żadnego wyniku, wyswietli jedynie komunikat "Stworzono obiekt o nazwie 'okregi'".
 
 ```r
