@@ -10,7 +10,7 @@ library(wybory)
 ```
 
 ## Wstep
-Ten zestaw funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** lub **Hare-Niemeyera**. Okreslajac wyniki procentowe dla poszczególnych komitetów lub korzystajac z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladalyby sie mandaty na poziomie okregów lub calego kraju.
+Ten zestaw funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** oraz **Hare-Niemeyera**. Okreslajac wyniki procentowe dla poszczególnych komitetów lub korzystajac z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladalyby sie mandaty na poziomie okregów lub calego kraju.
 
 Przed rozpoczeciem korzystania z wlasciwych funkcji tego pakietu, **musisz pobrać** ze strony PKW aktualny plik CSV zawierajacy dane dotyczace okregów wyborczych w Polsce. Bez tych informacji (liczby mandatów oraz wyborców w okregu) inne funkcje nie beda dzialaly poprawnie.
 
@@ -27,7 +27,7 @@ Użyj funkcji `wybory_okreg`, wpisz poparcie dla 5 komitetów wyborczych oraz wy
 Funkcja zwraca wynik w formie macierzy w której każda kolumna zawiera liczbę mandatów uzyskanych przez komitet wg danej metody. Zobaczysz także wygenerowany wykres slupkowy. Poziome linie wyznaczaja realne poparcie komitetów w odniesieniu do liczby mandatów dostepnych w danym okregu wyborczym.
 
 ```r
-wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4)
+wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4, frekwencja = 100)
 ```
 
 ![](wyboryokreg_wykres.png)
