@@ -1,11 +1,18 @@
-#Argumentami funkcji są wartości procentowe poparcia pięciu największych komitetów wyborczych oraz nr okręgu wyborczego, a opcjonalnie także frekwencji
-#Suma poparcia wszystkich 5 komitetów nie może być większa niż 100%, natomiast gdy jest mniejsza niż 90% - pojawi się ostrzeżenie
-#Numer okręgu wyborczego musi być liczbą całkowitą z przedziału (1,41)
-#Użytkownik może także zdefiniować frekwencję w danym okręgu, domyślnie jest ona jednak ustawiona na 100%.
-#Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
-#Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
-#Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do dostepnych mandatow
+#' Funkcja obliczajaca rozklad mandatów w wybranym okregu wyborczym
+#'
+#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatów przyznanych
+#' komitetom wg trzech różnych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
+#' a także wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatów.
+#'
+#' @param kom1,kom2,kom3,kom4,kom5 wyniki wyborcze komitetów w %
+#' @param okreg liczba z przedzialu (1, 41); numer okregu, w którym chcemy obliczyć rozklad mandatów
+#' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
+#'
+#' @return macierz z wynikami oraz wykres obrazujacy wyniki
 #' @export
+#'
+#' @examples
+#' wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4)
 wybory_okreg = function(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100){
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
