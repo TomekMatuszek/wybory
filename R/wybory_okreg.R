@@ -1,6 +1,6 @@
-#' Funkcja obliczajaca rozklad mandatow w wybranym okregu wyborczym
+#' Obliczanie rozkladu mandatow w okregu
 #'
-#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow przyznanych
+#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow z okregu przyznanych
 #' komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
 #' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
 #'

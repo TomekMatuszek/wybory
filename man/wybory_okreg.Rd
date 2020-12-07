@@ -2,7 +2,7 @@
 % Please edit documentation in R/wybory_okreg.R
 \name{wybory_okreg}
 \alias{wybory_okreg}
-\title{Funkcja obliczajaca rozklad mandatow w wybranym okregu wyborczym}
+\title{Obliczanie rozkladu mandatow w okregu}
 \usage{
 wybory_okreg(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100)
 }
@@ -17,7 +17,7 @@ wybory_okreg(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100)
 macierz z wynikami oraz wykres obrazujacy wyniki
 }
 \description{
-Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow przyznanych
+Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow z okregu przyznanych
 komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
 a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
 }

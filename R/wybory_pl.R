@@ -1,10 +1,18 @@
-#Funkcja przeprowadza funkcje wybory dla wszystkich okregow i sumuje wyniki
-#Zachodzi tu hipotetyczna sytuacja rownomiernego rozkladu glosów w skali kraju
-#Argumentami sa kolejno wyniki pieciu komitetów wyborczych oraz frekwencja
-#Produktem funkcji jest macierz przedstawiająca podział mandatów przy podanych wynikach dla róznych metod
-#Wyswietlony zostanie takze wykres slupkowy obrazujacy wyniki z macierzy
-#Wraz z liniami pokazujacymi realne poparcie komitetu w relacji do wszystkich mandatow
+#' Obliczanie rozkladu mandatow przy rownomiernym poparciu w skali kraju
+#'
+#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow poselskich przyznanych
+#' komitetom wg trzech roznych metod w przypadku gdyby wszystkie komitety otrzymaly rownomierne poparcie w skali kraju.
+#' Wyswietlany także jest wykres zawierajacy wspomniane informacje,
+#' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
+#'
+#' @param kom1,kom2,kom3,kom4,kom5 wyniki wyborcze komitetow w %
+#' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
+#'
+#' @return macierz z wynikami oraz wykres obrazujacy wyniki
 #' @export
+#'
+#' @examples
+#' wybory_pl(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6)
 wybory_pl = function(kom1, kom2, kom3, kom4, kom5, frekwencja = 100){
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")

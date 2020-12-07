@@ -1,4 +1,15 @@
+#' Wykres eksploracyjny - wyniki wyborow
+#'
+#' @description Funkcja ta tworzy wykres pudelkowy obrazujacy rozklad wynikow poszczegolnych komitetow wyborczych w okregach
+#'
+#' @param nazwa sciezka do pliku z wynikami wyborow pobranego ze strony PKW
+#' @param kol1,kol2,kol3,kol4,kol5 numery kolumn w ktorych znajduja sie wyniki interesujacych nas pieciu komitetow
+#'
+#' @return wykres pudelkowy obrazujacy rozklad wynikow partii w okregach
 #' @export
+#'
+#' @examples
+#' wykres_wyniki("sejm_wyniki_2019.xlsx", kol1 = 9, kol2 = 11, kol3 = 12, kol4 = 14, kol5 = 16)
 wykres_wyniki = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki_df = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
