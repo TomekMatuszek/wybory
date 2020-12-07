@@ -1,11 +1,11 @@
-#' Funkcja obliczajaca rozklad mandatów w wybranym okregu wyborczym
+#' Funkcja obliczajaca rozklad mandatow w wybranym okregu wyborczym
 #'
-#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatów przyznanych
-#' komitetom wg trzech różnych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-#' a także wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatów.
+#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow przyznanych
+#' komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
+#' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
 #'
-#' @param kom1,kom2,kom3,kom4,kom5 wyniki wyborcze komitetów w %
-#' @param okreg liczba z przedzialu (1, 41); numer okregu, w którym chcemy obliczyć rozklad mandatów
+#' @param kom1,kom2,kom3,kom4,kom5 wyniki wyborcze komitetow w %
+#' @param okreg liczba z przedzialu (1, 41); numer okregu, w ktorym chcemy obliczyc rozklad mandatow
 #' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
 #'
 #' @return macierz z wynikami oraz wykres obrazujacy wyniki
