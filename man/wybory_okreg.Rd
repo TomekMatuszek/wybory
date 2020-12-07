@@ -2,14 +2,14 @@
 % Please edit documentation in R/wybory_okreg.R
 \name{wybory_okreg}
 \alias{wybory_okreg}
-\title{Funkcja obliczajaca rozklad mandatów w wybranym okregu wyborczym}
+\title{Funkcja obliczajaca rozklad mandatow w wybranym okregu wyborczym}
 \usage{
 wybory_okreg(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100)
 }
 \arguments{
-\item{kom1, kom2, kom3, kom4, kom5}{wyniki wyborcze komitetów w \%}
+\item{kom1, kom2, kom3, kom4, kom5}{wyniki wyborcze komitetow w \%}
 
-\item{okreg}{liczba z przedzialu (1, 41); numer okregu, w którym chcemy obliczyć rozklad mandatów}
+\item{okreg}{liczba z przedzialu (1, 41); numer okregu, w ktorym chcemy obliczyc rozklad mandatow}
 
 \item{frekwencja}{frekwencja wyborcza, domyslnie ustawiona na 100\%}
 }
@@ -17,9 +17,9 @@ wybory_okreg(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100)
 macierz z wynikami oraz wykres obrazujacy wyniki
 }
 \description{
-Funkcja tworzy macierz zawierajaca informacje o liczbie mandatów przyznanych
-komitetom wg trzech różnych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-a także wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatów.
+Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow przyznanych
+komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
+a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
 }
 \examples{
 wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4)
