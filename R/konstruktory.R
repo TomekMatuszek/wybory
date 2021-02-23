@@ -29,7 +29,7 @@ konstruktor_okregow("okregi_sejm.csv")
 #Konstruktor wynikow tworzy macierz wynikow o strukturze pozwalajacej uzyc funkcji przydzielajacych mandaty
 #Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
-konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
+konstruktor_wynikow2 = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
@@ -39,10 +39,17 @@ konstruktor_wynikow = function(nazwa, kol1, kol2, kol3, kol4, kol5){
   } else{
     stop("Wybrano nie obslugiwany format pliku!")
   }
-  okregi_wyniki = matrix(c(okregi_wyniki[ ,kol1], okregi_wyniki[ ,kol2], okregi_wyniki[ ,kol3],
-                           okregi_wyniki[ ,kol4], okregi_wyniki[ ,kol5]),
-                         nrow = 41, ncol = 5)
-  colnames(okregi_wyniki) = c("Kom1", "Kom2", "Kom3", "Kom4", "Kom5")
+  kolumny = c(...)
+  wektor_wyniki = c()
+  for (i in kolumny) {
+    wektor_wyniki = c(wektor_wyniki, okregi_wyniki[ ,i])
+  }
+  okregi_wyniki = matrix(wektor_wyniki , nrow = 41, ncol = length(kolumny))
+  nazwy_kolumn = c()
+  for (i in 1:length(kolumny)) {
+    nazwy_kolumn = c(nazwy_kolumn, paste0("Kol", i))
+  }
+  colnames(okregi_wyniki) = nazwy_kolumn
   okregi_wyniki = structure(okregi_wyniki, class = "macierz_wynikow")
   okregi_wyniki
 }
