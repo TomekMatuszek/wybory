@@ -29,7 +29,7 @@ konstruktor_okregow("okregi_sejm.csv")
 #Konstruktor wynikow tworzy macierz wynikow o strukturze pozwalajacej uzyc funkcji przydzielajacych mandaty
 #Nalezy wpisac sciezke do pobranego przez nas pliku excel z wynikami wyborow ze strony PKW
 #Kolejne argumenty (max 5) oznaczaja numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
-konstruktor_wynikow2 = function(nazwa, ...){
+konstruktor_wynikow = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
