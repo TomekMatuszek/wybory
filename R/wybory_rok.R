@@ -15,7 +15,7 @@ wybory_rok.macierz_wynikow = function(wyniki){
   dh_mx = matrix( ,nrow = 5, ncol = 1)
   for (i in 1:nrow(wyniki)) {
     dh = dhont(wyniki[i, 1], wyniki[i, 2], wyniki[i, 3],
-               wyniki[i, 4] - 0.01, wyniki[i, 5], i)
+               wyniki[i, 4] - 0.01, wyniki[i, 5], okreg = i)
     dh_mx = cbind(dh_mx, dh)
   }
   dh_sum = rowSums(dh_mx, na.rm = TRUE)
@@ -23,7 +23,7 @@ wybory_rok.macierz_wynikow = function(wyniki){
   sl_mx = matrix( ,nrow = 5, ncol = 1)
   for (i in 1:nrow(wyniki)) {
     sl = sainte_lague(wyniki[i, 1], wyniki[i, 2], wyniki[i, 3],
-               wyniki[i, 4] - 0.01, wyniki[i, 5], i)
+               wyniki[i, 4] - 0.01, wyniki[i, 5], okreg = i)
     sl_mx = cbind(sl_mx, sl)
   }
   sl_sum = rowSums(sl_mx, na.rm = TRUE)
@@ -31,7 +31,7 @@ wybory_rok.macierz_wynikow = function(wyniki){
   hn_mx = matrix( ,nrow = 5, ncol = 1)
   for (i in 1:nrow(wyniki)) {
     hn = hare_niemeyer(wyniki[i, 1], wyniki[i, 2], wyniki[i, 3],
-                      wyniki[i, 4] - 0.01, wyniki[i, 5], i)
+                      wyniki[i, 4] - 0.01, wyniki[i, 5], okreg = i)
     hn_mx = cbind(hn_mx, hn)
   }
   hn_sum = rowSums(hn_mx, na.rm = TRUE)
