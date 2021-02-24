@@ -4,12 +4,12 @@
 \alias{wykres_wyniki}
 \title{Wykres eksploracyjny - wyniki wyborow}
 \usage{
-wykres_wyniki(nazwa, kol1, kol2, kol3, kol4, kol5)
+wykres_wyniki(nazwa, ...)
 }
 \arguments{
 \item{nazwa}{sciezka do pliku z wynikami wyborow pobranego ze strony PKW}
 
-\item{kol1, kol2, kol3, kol4, kol5}{numery kolumn w ktorych znajduja sie wyniki interesujacych nas pieciu komitetow}
+\item{...}{numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow}
 }
 \value{
 wykres pudelkowy obrazujacy rozklad wynikow partii w okregach
@@ -18,5 +18,5 @@ wykres pudelkowy obrazujacy rozklad wynikow partii w okregach
 Funkcja ta tworzy wykres pudelkowy obrazujacy rozklad wynikow poszczegolnych komitetow wyborczych w okregach
 }
 \examples{
-wykres_wyniki("sejm_wyniki_2019.xlsx", kol1 = 9, kol2 = 11, kol3 = 12, kol4 = 14, kol5 = 16)
+wykres_wyniki("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
 }

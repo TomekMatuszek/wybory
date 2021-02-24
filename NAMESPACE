@@ -2,6 +2,7 @@
 
 S3method(wybory_rok,macierz_wynikow)
 export(konstruktor_okregow)
+export(konstruktor_wynikow)
 export(wybory_okreg)
 export(wybory_pl)
 export(wybory_rok)
