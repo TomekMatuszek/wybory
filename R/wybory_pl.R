@@ -1,18 +1,18 @@
 #' Obliczanie rozkladu mandatow przy rownomiernym poparciu w skali kraju
 #'
-#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow poselskich przyznanych
+#' @description Funkcja tworzy macierz zawierajacą informacje o liczbie mandatow poselskich przyznanych
 #' komitetom wg trzech roznych metod w przypadku gdyby wszystkie komitety otrzymaly rownomierne poparcie w skali kraju.
 #' Wyswietlany także jest wykres zawierajacy wspomniane informacje,
 #' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
 #'
-#' @param kom1,kom2,kom3,kom4,kom5 wyniki wyborcze komitetow w %
+#' @param ... wyniki wyborcze komitetow w % (max. 10 komitetów)
 #' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
 #'
 #' @return macierz z wynikami oraz wykres obrazujacy wyniki
 #' @export
 #'
 #' @examples
-#' wybory_pl(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6)
+#' wybory_pl(30, 29, 10, 7, 6)
 wybory_pl = function(..., frekwencja = 100){
   wyniki = c(...)
   if (exists("okregi") == FALSE){

@@ -4,10 +4,10 @@
 \alias{wybory_okreg}
 \title{Obliczanie rozkladu mandatow w okregu}
 \usage{
-wybory_okreg(kom1, kom2, kom3, kom4, kom5, okreg, frekwencja = 100)
+wybory_okreg(..., okreg, frekwencja = 100)
 }
 \arguments{
-\item{kom1, kom2, kom3, kom4, kom5}{wyniki wyborcze komitetow w \%}
+\item{...}{wyniki wyborcze komitetow w \% (max. 10 komitetów)}
 
 \item{okreg}{liczba z przedzialu (1, 41); numer okregu, w ktorym chcemy obliczyc rozklad mandatow}
 
@@ -22,5 +22,5 @@ komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy ws
 a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
 }
 \examples{
-wybory_okreg(kom1 = 30, kom2 = 29, kom3 = 10, kom4 = 7, kom5 = 6, okreg = 4)
+wybory_okreg(30, 29, 10, 7, 6, okreg = 4)
 }
