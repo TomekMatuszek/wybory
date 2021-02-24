@@ -33,6 +33,7 @@ konstruktor_wynikow = function(nazwa, ...){
     nazwy_kolumn = c(nazwy_kolumn, paste0("Kol", i))
   }
   colnames(okregi_wyniki) = nazwy_kolumn
+  okregi_wyniki[is.na(okregi_wyniki)] = 0
   okregi_wyniki = structure(okregi_wyniki, class = "macierz_wynikow")
   okregi_wyniki
 }
