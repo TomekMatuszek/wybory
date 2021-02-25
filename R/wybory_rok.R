@@ -24,6 +24,11 @@ wybory_rok.macierz_wynikow = function(wyniki){
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
   }
+  for (i in 1:ncol(wyniki)) {
+    if (mean(wyniki[ , i]) < 5 && length(which(wyniki[ , i] > 0)) > 1){
+      wyniki[ , i] = rep(0, times = 41)
+    }
+  }
   dh_mx = matrix( ,nrow = ncol(wyniki), ncol = 1)
   for (i in 1:nrow(wyniki)) {
     argumenty = c()

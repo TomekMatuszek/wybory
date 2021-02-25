@@ -18,6 +18,11 @@ wybory_pl = function(..., frekwencja = 100){
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
   }
+  for (i in 1:length(wyniki)) {
+    if (wyniki[i] < 5){
+      wyniki[i] = 0
+    }
+  }
   m = matrix( , ncol = 1, nrow = length(wyniki))
   for (i in 1:nrow(okregi)) {
     m2 = dhont(wyniki, okreg = i, frekwencja = 100)
