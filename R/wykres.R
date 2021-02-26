@@ -37,7 +37,7 @@ wykres_wyniki = function(nazwa, ...){
     ggplot2::geom_boxplot(color = "black") + ggplot2::geom_jitter(size = 1, alpha = 0.3, width = 0.3) +
     ggplot2::scale_color_manual(values = cols[1:length(kolumny)]) +
     ggplot2::labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia") +
-    ggplot2::ggtitle("Rozklad wyników poszczególnych komitetów w okregach wyborczych") +
+    ggplot2::ggtitle("Rozkład wyników poszczególnych komitetów w okręgach wyborczych") +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::geom_hline(yintercept = 5, color = "gray40", size = 0.5)
 }

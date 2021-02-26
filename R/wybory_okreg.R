@@ -46,8 +46,8 @@ wybory_okreg = function(..., okreg, frekwencja = 100){
           col = cols[1:length(wyniki)],
           ylim = c(0, max(wyniki_man) + 2),
           border = cols[1:length(wyniki)],
-          ylab = "Liczba mandatów", xlab = "Metoda obliczania podzialu mandatów",
-          main = c("Podzial mandatów w okregu", okreg))
+          ylab = "Liczba mandatów", xlab = "Metoda obliczania podziału mandatów",
+          main = c("Podział mandatów w okręgu", okreg))
   for (i in 1:length(wyniki)) {
     abline(h = okregi[okreg, 2] * (wyniki[i] / 100),
            col = cols[i], lwd = 1.5)

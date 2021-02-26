@@ -55,9 +55,9 @@ wybory_pl = function(..., frekwencja = 100){
   barplot(m3, beside = TRUE,
           col = cols[1:length(wyniki)],
           ylim = c(0,250), ylab = "Liczba mandatów",
-          xlab = "Metoda obliczania podzialu mandatów",
+          xlab = "Metoda obliczania podziału mandatów",
           border = cols[1:length(wyniki)],
-          main = "Podzial mandatów w Sejmie")
+          main = "Podział mandatów w Sejmie")
   abline(h = 230, col = "red", lwd = 2, lty = 2)
   for (i in 1:length(wyniki)) {
     abline(h = 460 * (wyniki[i] / 100),

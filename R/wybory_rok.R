@@ -77,9 +77,9 @@ wybory_rok.macierz_wynikow = function(wyniki){
   barplot(wyniki_man, beside = TRUE,
           col = cols[1:ncol(wyniki)],
           ylim = c(0,250), ylab = "Liczba mandatów",
-          xlab = "Metoda obliczania podzialu mandatów",
+          xlab = "Metoda obliczania podziału mandatów",
           border = cols[1:ncol(wyniki)],
-          main = "Podzial mandatów w Sejmie")
+          main = "Podział mandatów w Sejmie")
   abline(h = 230, col = "red", lwd = 2, , lty = 2)
   for (i in 1:ncol(wyniki)) {
     abline(h = 460 * (mean(wyniki[ , i]) / 100),
