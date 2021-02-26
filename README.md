@@ -6,7 +6,7 @@
 * [wybory_okreg](#Funkcja-wybory_okreg)
 * [wybory_pl](#Funkcja-wybory_pl)
 * [wybory_rok](#Funkcja-wybory_rok)
-* [Wykres eksploracyjny](#Funkcja-wykres_wyniki-wykres-eksploracyjny)
+* [Wykres eksploracyjny](#Funkcja-wykres_wyniki---wykres-eksploracyjny)
 * [Uwagi](#Uwagi)
 
 ## Instalacja
