@@ -21,11 +21,11 @@ konstruktor_okregow = function(nazwa){
     stop("Wybrano nie obslugiwany format pliku!")
   }
   rok = stringr::str_sub(nazwa, start = 7, end = 10)
-  if (rok == 2019 || rok == 2015){
+  if (rok == "2019" || rok == "2015"){
     okregi <<- matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
-  } else if (rok == 2011){
+  } else if (rok == "2011"){
     okregi <<- matrix(c(okregi[ ,5], okregi[ ,2]), ncol = 2, nrow = 41)
-  } else if (rok == 2007){
+  } else if (rok == "2007"){
     okregi <<- matrix(c(okregi[ ,4], okregi[ ,3]), ncol = 2, nrow = 41)
   }
   colnames(okregi) <<- c("Liczba wyborców", "Liczba mandatów")

@@ -1,6 +1,7 @@
 library(wybory)
 devtools::load_all()
 
+pobierz_wyniki(2019)
 konstruktor_okregow("okregi_sejm.csv")
 wybory_2019 = konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16, 17, 18)
 wybory_2015 = konstruktor_wynikow("sejm_wyniki_2015.xls", 9, 10, 13, 15, 16, 24)
