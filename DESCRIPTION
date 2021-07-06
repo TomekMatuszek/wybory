@@ -16,5 +16,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
   readxl,
+  writexl,
   stringr,
-  ggplot2
+  ggplot2,
+  rvest,
+  xml2
