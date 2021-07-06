@@ -13,8 +13,8 @@
 konstruktor_okregow = function(nazwa){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
-    okregi = sapply(okregi_dane, as.numeric)
-    okregi = as.data.frame(okregi_dane)
+    okregi = sapply(okregi, as.numeric)
+    okregi = as.data.frame(okregi)
   } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi = read.csv(nazwa, sep = ";")
   } else{
