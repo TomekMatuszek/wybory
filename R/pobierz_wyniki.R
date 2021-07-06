@@ -12,14 +12,28 @@
 #' pobierz_wyniki(2019)
 pobierz_wyniki = function(rok){
   linki = readxl::read_excel("linki.xls")
-  if (rok == 2019 || rok == 2015){
-    download.file(linki$link_wyniki[linki$rok == rok],
-                  destfile = paste0("wyniki", rok, ".zip"))
-    download.file(linki$link_okregi[linki$rok == rok],
-                  destfile = paste0("okregi", rok, ".zip"))
+  if (rok == 2019){
+    download.file(linki$link_wyniki[linki$rok == 2019],
+                  destfile = "wyniki2019.zip")
+    download.file(linki$link_okregi[linki$rok == 2019],
+                  destfile = "okregi2019.zip")
 
     unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
     unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
+
+    file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2019.xlsx")
+    file.rename("dane_wybory/wyniki_gl_na_listy_po_okregach_proc_sejm.xlsx", "dane_wybory/wyniki2019.xlsx")
+  } else if (rok == 2015){
+    download.file(linki$link_wyniki[linki$rok == 2015],
+                  destfile = "wyniki2015.zip")
+    download.file(linki$link_okregi[linki$rok == 2015],
+                  destfile = "okregi2015.zip")
+
+    unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
+    unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
+
+    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/okregi2015.xlsx")
+    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xlsx")
   } else if (rok == 2011){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(51)")
