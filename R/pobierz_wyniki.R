@@ -73,6 +73,7 @@ pobierz_wyniki = function(rok){
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(82)")
     tabela_r = rvest::html_table(tabela_html, fill = TRUE, header = TRUE)
     okregi2007 = tabela_r[, c(1, 3, 4, 6)]
+    okregi2007[ , 6] = stringr::str_replace_all(okregi2007[ , 6], pattern = "\\s+", replacement = "")
     writexl::write_xlsx(okregi2007, "dane_wybory/okregi2007.xlsx")
   } else{
     stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
