@@ -1,3 +1,15 @@
+#' Funkcja pobierająca dane dot. wyników wyborów do Sejmu RP
+#'
+#' @description Funkcja pobiera pliki .xlsx i .csv z wynikami wyborów
+#' dla podanego przez użytkownika roku, a także z danymi o okręgach wyborczych
+#'
+#' @param rok rok, w którym odbyły się wybory parlamentarne (do wyboru: 2007, 2011, 2015, 2019)
+#'
+#' @return pobrane pliki w folderze 'dane_wybory'
+#' @export
+#'
+#' @examples
+#' pobierz_wyniki(2019)
 pobierz_wyniki = function(rok){
   linki = readxl::read_excel("linki.xls")
   if (rok == 2019 || rok == 2015){
@@ -47,5 +59,8 @@ pobierz_wyniki = function(rok){
     tabela_r = rvest::html_table(tabela_html, fill = TRUE, header = TRUE)
     okregi2007 = tabela_r[, c(1, 3, 4, 6)]
     writexl::write_xlsx(okregi2007, "dane_wybory/okregi2007.xlsx")
+  } else{
+    stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
   }
+  konstruktor_okregow(paste0("dane_wybory/okregi", rok, ".xls"))
 }
