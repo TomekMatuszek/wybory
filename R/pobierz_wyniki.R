@@ -26,13 +26,13 @@ pobierz_wyniki = function(rok){
   } else if (rok == 2015){
     download.file(linki$link_wyniki[linki$rok == 2015],
                   destfile = "wyniki2015.zip")
-    download.file(linki$link_okregi[linki$rok == 2015],
+    download.file(linki$link_okregi[linki$rok == 2019],
                   destfile = "okregi2015.zip")
 
     unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
     unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
 
-    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/okregi2015.xls")
+    file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2015.xlsx")
     file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xls")
   } else if (rok == 2011){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
