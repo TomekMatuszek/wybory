@@ -32,8 +32,8 @@ pobierz_wyniki = function(rok){
     unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
     unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
 
-    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/okregi2015.xlsx")
-    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xlsx")
+    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/okregi2015.xls")
+    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xls")
   } else if (rok == 2011){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(51)")
@@ -76,5 +76,5 @@ pobierz_wyniki = function(rok){
   } else{
     stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
   }
-  konstruktor_okregow(paste0("dane_wybory/okregi", rok, ".xlsx"))
+  konstruktor_okregow(list.files("dane-wybory/", pattern = "^okregi", full.names = TRUE))
 }
