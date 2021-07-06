@@ -55,6 +55,7 @@ pobierz_wyniki = function(rok){
     colnames(okregi2011) = c("nr_okregu", "liczba_mandatow", "liczba_komitetow",
                              "liczba_kandydatow", "liczba_wyborcow", "granice")
     writexl::write_xlsx(okregi2011, "dane_wybory/okregi2011.xlsx")
+    file.remove("okregi.csv")
   } else if (rok == 2007){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2007])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(100)")
