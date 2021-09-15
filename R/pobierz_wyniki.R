@@ -10,7 +10,8 @@
 #'
 #' @examples
 #' pobierz_wyniki(2019)
-pobierz_wyniki = function(rok){
+pobierz_wyniki = function(rok, path){
+  setwd(path)
   linki = dane_linki
   if (rok == 2019){
     download.file(linki$link_wyniki[linki$rok == 2019],
