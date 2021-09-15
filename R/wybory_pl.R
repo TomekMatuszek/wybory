@@ -58,12 +58,12 @@ wybory_pl = function(..., frekwencja = 100){
           xlab = "Metoda obliczania podziału mandatów",
           border = cols[1:length(wyniki)],
           main = "Podział mandatów w Sejmie")
-  abline(h = 230, col = "red", lwd = 2, lty = 2)
+  abline(h = 231, col = "red", lwd = 2, lty = 2)
   for (i in 1:length(wyniki)) {
     abline(h = 460 * (wyniki[i] / 100),
            col = cols[i], lwd = 1.5)
   }
-  text(18, 240, "230", col = "red")
+  text(18, 240, "231", col = "red")
 
   m3
 }
