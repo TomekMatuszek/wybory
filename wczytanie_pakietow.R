@@ -3,3 +3,4 @@
 #install.packages("Rtools")
 library(usethis)
 create_package("F:/Studia/programowanieR/wybory")
+use_data_raw()
