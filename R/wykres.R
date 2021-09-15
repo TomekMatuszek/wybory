@@ -18,6 +18,7 @@ wykres_wyniki = function(nazwa, ...){
   } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi_wyniki_df = read.csv(nazwa, sep = ";")
   }
+  okregi_wyniki_df = stringr::str_replace_all(okregi_wyniki_df, ",", ".")
   kolumny = c(...)
   kol_komitet = c()
   for (i in 1:length(kolumny)) {
