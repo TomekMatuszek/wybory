@@ -13,12 +13,13 @@
 wykres_wyniki = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki_df = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+    okregi_wyniki_df = stringr::str_replace_all(okregi_wyniki_df, ",", ".")
     okregi_wyniki_df = sapply(okregi_wyniki_df, as.numeric)
     okregi_wyniki_df = as.data.frame(okregi_wyniki_df)
   } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi_wyniki_df = read.csv(nazwa, sep = ";")
+    okregi_wyniki_df = stringr::str_replace_all(okregi_wyniki_df, ",", ".")
   }
-  okregi_wyniki_df = stringr::str_replace_all(okregi_wyniki_df, ",", ".")
   kolumny = c(...)
   kol_komitet = c()
   for (i in 1:length(kolumny)) {
