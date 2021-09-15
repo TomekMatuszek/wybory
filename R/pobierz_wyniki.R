@@ -79,5 +79,5 @@ pobierz_wyniki = function(rok, path){
   } else{
     stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
   }
-  konstruktor_okregow(list.files("dane_wybory/", pattern = "^okregi", full.names = TRUE))
+  konstruktor_okregow(list.files("dane_wybory/", pattern = "^okregi", full.names = TRUE), path)
 }

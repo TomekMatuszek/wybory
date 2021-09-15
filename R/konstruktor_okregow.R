@@ -10,7 +10,8 @@
 #'
 #' @examples
 #' konstruktor_okregow("okregi2019.csv")
-konstruktor_okregow = function(nazwa){
+konstruktor_okregow = function(nazwa, path){
+  setwd(path)
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
     okregi = sapply(okregi, as.numeric)
