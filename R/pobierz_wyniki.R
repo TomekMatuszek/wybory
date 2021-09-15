@@ -11,7 +11,7 @@
 #' @examples
 #' pobierz_wyniki(2019)
 pobierz_wyniki = function(rok){
-  linki = readxl::read_excel("linki.xls")
+  linki = dane_linki
   if (rok == 2019){
     download.file(linki$link_wyniki[linki$rok == 2019],
                   destfile = "wyniki2019.zip")
