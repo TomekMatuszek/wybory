@@ -10,8 +10,7 @@
 #'
 #' @examples
 #' pobierz_wyniki(2019)
-pobierz_wyniki = function(rok, path){
-  setwd(path)
+pobierz_wyniki = function(rok){
   linki = dane_linki
   if (rok == 2019){
     download.file(linki$link_wyniki[linki$rok == 2019],
@@ -79,5 +78,5 @@ pobierz_wyniki = function(rok, path){
   } else{
     stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
   }
-  konstruktor_okregow(list.files("dane_wybory/", pattern = "^okregi", full.names = TRUE), path)
+  konstruktor_okregow(list.files("dane_wybory/", pattern = "^okregi", full.names = TRUE))
 }
