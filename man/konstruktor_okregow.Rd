@@ -17,5 +17,5 @@ Funkcja tworzy macierz, w ktorej znajduja sie informacje dotyczace
 okregow wyborczych - liczby ludnosci oraz dostepnych mandatow.
 }
 \examples{
-konstruktor_okregow("okregi_sejm.csv")
+konstruktor_okregow("okregi2019.csv")
 }
