@@ -21,7 +21,7 @@ library(wybory)
 ## Wstęp i pobranie danych
 Ten pakiet funkcji pozwoli Ci na przeliczanie podziału mandatów w danych okręgach wyborczych do Sejmu RP trzema różnymi metodami: **D'Honta** , **Sainte-Lague** oraz **Hare-Niemeyera**. Określając wyniki procentowe dla poszczególnych komitetów lub korzystając z prawdziwych wyników pobranych ze strony PKW możesz sprawdzić jak rozkladałyby się mandaty na poziomie okregów lub całego kraju.
 
-Przed rozpoczęciem korzystania z właściwych funkcji tego pakietu, należy **pobrać pliki** zawierające informacje o okręgach wyborczych oraz wyniki wyborów parlamentarnych w wybranym przez użytkownika roku (aktualnie dostępne są wyniki z lat 2007-2019). Aby tego dokonać, należy użyć funkcję `pobierz_wyniki` poprzez podanie jako argumentu wybranego roku, w którym odbyły się wybory do Sejmu.
+Przed rozpoczęciem korzystania z właściwych funkcji tego pakietu, należy **pobrać pliki** zawierające informacje o okręgach wyborczych oraz wyniki wyborów parlamentarnych w wybranym przez użytkownika roku (aktualnie dostępne są wyniki z lat 2007-2019). Aby tego dokonać, należy użyć funkcję `pobierz_wyniki` poprzez podanie jako argumentu wybranego roku, w którym odbyły się wybory do Sejmu. Opcjonalnym argumentem jest podanie ścieżki do folderu w którym mają zostać zapisane pobrane przez funkcję pliki. Domyślną wartością tego argumentu jest ścieżka aktualnie otwartego projektu RStudio.
 
 ```r
 pobierz_wyniki(2019)
