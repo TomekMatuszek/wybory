@@ -15,9 +15,11 @@
 konstruktor_wynikow = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
-    for (i in 1:ncol(okregi_wyniki)) {
-      for (j in 1:41) {
-        okregi_wyniki[j, i] = stringr::str_replace_all(okregi_wyniki[j, i], ",", ".")
+    if (any(stringr::str_detect(okregi_wyniki, "[0-9]+\\,{1}[0-9]+"))){
+      for (i in 1:ncol(okregi_wyniki)) {
+        for (j in 1:41) {
+          okregi_wyniki[j, i] = stringr::str_replace_all(okregi_wyniki[j, i], ",", ".")
+        }
       }
     }
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
