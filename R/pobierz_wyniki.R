@@ -19,22 +19,26 @@ pobierz_wyniki = function(rok, path = getwd()){
     download.file(linki$link_okregi[linki$rok == 2019],
                   destfile = paste0(path, "/okregi2019.zip"))
 
-    unzip(paste0(path, "/wyniki2019.zip"), exdir = "dane_wybory")
-    unzip(paste0(path, "/okregi2019.zip"), exdir = "dane_wybory")
+    unzip(paste0(path, "/wyniki2019.zip"), exdir = paste0(path, "/dane_wybory"))
+    unzip(paste0(path, "/okregi2019.zip"), exdir = paste0(path, "/dane_wybory"))
 
-    file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2019.xlsx")
-    file.rename("dane_wybory/wyniki_gl_na_listy_po_okregach_proc_sejm.xlsx", "dane_wybory/wyniki2019.xlsx")
+    file.rename(paste0(path, "/dane_wybory/okregi_sejm.xlsx"),
+                paste0(path, "/dane_wybory/okregi2019.xlsx"))
+    file.rename(paste0(path, "/dane_wybory/wyniki_gl_na_listy_po_okregach_proc_sejm.xlsx"),
+                paste0(path, "/dane_wybory/wyniki2019.xlsx"))
   } else if (rok == 2015){
     download.file(linki$link_wyniki[linki$rok == 2015],
-                  destfile = "wyniki2015.zip")
+                  destfile = paste0(path, "/wyniki2015.zip"))
     download.file(linki$link_okregi[linki$rok == 2019],
-                  destfile = "okregi2015.zip")
+                  destfile = paste0(path, "/okregi2015.zip"))
 
-    unzip("wyniki2015.zip", exdir = "dane_wybory")
-    unzip("okregi2015.zip", exdir = "dane_wybory")
+    unzip(paste0(path, "/wyniki2015.zip"), exdir = paste0(path, "/dane_wybory"))
+    unzip(paste0(path, "/okregi2015.zip"), exdir = paste0(path, "/dane_wybory"))
 
-    file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2015.xlsx")
-    file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xls")
+    file.rename(paste0(path, "/dane_wybory/okregi_sejm.xlsx"),
+                paste0(path, "/dane_wybory/okregi2015.xlsx"))
+    file.rename(paste0(path, "/dane_wybory/2015-gl-lis-okr-proc.xls"),
+                paste0(path, "/dane_wybory/wyniki2015.xls"))
   } else if (rok == 2011){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(51)")
