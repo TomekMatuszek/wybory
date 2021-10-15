@@ -4,22 +4,23 @@
 #' dla podanego przez użytkownika roku, a także z danymi o okręgach wyborczych
 #'
 #' @param rok rok, w którym odbyły się wybory parlamentarne (do wyboru: 2007, 2011, 2015, 2019)
+#' @param path folder, w którym mają zostać zapisane pobrane pliki
 #'
 #' @return pobrane pliki w folderze 'dane_wybory'
 #' @export
 #'
 #' @examples
 #' pobierz_wyniki(2019)
-pobierz_wyniki = function(rok){
+pobierz_wyniki = function(rok, path = getwd()){
   linki = dane_linki
   if (rok == 2019){
     download.file(linki$link_wyniki[linki$rok == 2019],
-                  destfile = "wyniki2019.zip")
+                  destfile = paste0(path, "/wyniki2019.zip"))
     download.file(linki$link_okregi[linki$rok == 2019],
-                  destfile = "okregi2019.zip")
+                  destfile = paste0(path, "/okregi2019.zip"))
 
-    unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
-    unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
+    unzip(paste0(path, "/wyniki2019.zip"), exdir = "dane_wybory")
+    unzip(paste0(path, "/okregi2019.zip"), exdir = "dane_wybory")
 
     file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2019.xlsx")
     file.rename("dane_wybory/wyniki_gl_na_listy_po_okregach_proc_sejm.xlsx", "dane_wybory/wyniki2019.xlsx")
@@ -29,8 +30,8 @@ pobierz_wyniki = function(rok){
     download.file(linki$link_okregi[linki$rok == 2019],
                   destfile = "okregi2015.zip")
 
-    unzip(paste0("wyniki", rok, ".zip"), exdir = "dane_wybory")
-    unzip(paste0("okregi", rok, ".zip"), exdir = "dane_wybory")
+    unzip("wyniki2015.zip", exdir = "dane_wybory")
+    unzip("okregi2015.zip", exdir = "dane_wybory")
 
     file.rename("dane_wybory/okregi_sejm.xlsx", "dane_wybory/okregi2015.xlsx")
     file.rename("dane_wybory/2015-gl-lis-okr-proc.xls", "dane_wybory/wyniki2015.xls")
@@ -48,8 +49,8 @@ pobierz_wyniki = function(rok){
     writexl::write_xlsx(wyniki2011, "dane_wybory/wyniki2011.xlsx")
 
     download.file(linki$link_okregi[linki$rok == 2011],
-                  destfile = paste0("okregi", 2011, ".zip"))
-    unzip(paste0("okregi", 2011, ".zip"), exdir = "dane_wybory")
+                  destfile = "okregi2011.zip")
+    unzip("okregi2011.zip", exdir = "dane_wybory")
     okregi2011 = read.csv("dane_wybory/okregi.csv", sep = ";")
     okregi2011 = okregi2011[1:41, 3:8]
     colnames(okregi2011) = c("nr_okregu", "liczba_mandatow", "liczba_komitetow",
