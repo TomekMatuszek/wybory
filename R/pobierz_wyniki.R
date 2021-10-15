@@ -47,7 +47,9 @@ pobierz_wyniki = function(rok, path = getwd()){
     wyniki2011 = tabela_r[2:42, ]
     wyniki2011$Okręg = as.numeric(stringr::str_sub(wyniki2011$Okręg, start = 1, end = 2))
     for (i in 3:13) {
-      wyniki2011[ , i] = as.numeric(stringr::str_replace_all(wyniki2011[ , i], "\\,", "\\."))
+      for (j in 1:nrow(wyniki2011)) {
+        wyniki2011[j , i] = stringr::str_replace_all(wyniki2011[j , i], "\\,", "\\.")
+      }
     }
     dir.create(paste0(path, "/dane_wybory"))
     writexl::write_xlsx(wyniki2011, paste0(path, "/dane_wybory/wyniki2011.xlsx"))
@@ -69,7 +71,9 @@ pobierz_wyniki = function(rok, path = getwd()){
     wyniki2007 = tabela_r[2:42, ]
     wyniki2007$Okręg = as.numeric(stringr::str_sub(wyniki2007$Okręg, start = 1, end = 2))
     for (i in 3:12) {
-      wyniki2007[ , i] = as.numeric(stringr::str_replace_all(wyniki2007[ , i], "\\,", "\\."))
+      for (j in 1:nrow(wyniki2007)) {
+        wyniki2007[j , i] = as.numeric(stringr::str_replace_all(wyniki2007[j , i], "\\,", "\\."))
+      }
     }
     dir.create(paste0(path, "/dane_wybory"))
     writexl::write_xlsx(wyniki2007, paste0(path, "/dane_wybory/wyniki2007.xlsx"))
