@@ -15,12 +15,20 @@
 konstruktor_wynikow = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
-    okregi_wyniki = stringr::str_replace_all(okregi_wyniki, ",", ".")
+    for (i in 1:ncol(okregi_wyniki)) {
+      for (j in 1:41) {
+        okregi_wyniki[j, i] = stringr::str_replace_all(okregi_wyniki[j, i], ",", ".")
+      }
+    }
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
     okregi_wyniki = as.data.frame(okregi_wyniki)
   } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi_wyniki = read.csv(nazwa, sep = ";")
-    okregi_wyniki = stringr::str_replace_all(okregi_wyniki, ",", ".")
+    for (i in 1:ncol(okregi_wyniki)) {
+      for (j in 1:41) {
+        okregi_wyniki[j, i] = stringr::str_replace_all(okregi_wyniki[j, i], ",", ".")
+      }
+    }
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
   } else{
     stop("Wybrano nie obslugiwany format pliku!")
