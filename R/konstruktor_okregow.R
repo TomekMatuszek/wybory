@@ -20,7 +20,7 @@ konstruktor_okregow = function(nazwa){
   } else{
     stop("Wybrano nie obslugiwany format pliku!")
   }
-  rok = stringr::str_sub(str_extract(nazwa, pattern = "dane_wybory/.+"), start = 19, end = 22)
+  rok = stringr::str_sub(stringr::str_extract(nazwa, pattern = "dane_wybory/.+"), start = 19, end = 22)
   if (rok == "2019" || rok == "2015"){
     okregi <<- matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
   } else if (rok == "2011"){
