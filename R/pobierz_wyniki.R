@@ -49,18 +49,18 @@ pobierz_wyniki = function(rok, path = getwd()){
     for (i in 3:13) {
       wyniki2011[ , i] = as.numeric(stringr::str_replace_all(wyniki2011[ , i], "\\,", "\\."))
     }
-    dir.create("dane_wybory")
-    writexl::write_xlsx(wyniki2011, "dane_wybory/wyniki2011.xlsx")
+    dir.create(paste0(path, "/dane_wybory"))
+    writexl::write_xlsx(wyniki2011, paste0(path, "/dane_wybory/wyniki2011.xlsx"))
 
     download.file(linki$link_okregi[linki$rok == 2011],
-                  destfile = "okregi2011.zip")
-    unzip("okregi2011.zip", exdir = "dane_wybory")
-    okregi2011 = read.csv("dane_wybory/okregi.csv", sep = ";")
+                  destfile = paste0(path, "/okregi2011.zip"))
+    unzip(paste0(path, "/okregi2011.zip"), exdir = paste0(path, "/dane_wybory"))
+    okregi2011 = read.csv(paste0(path, "/dane_wybory/okregi.csv"), sep = ";")
     okregi2011 = okregi2011[1:41, 3:8]
     colnames(okregi2011) = c("nr_okregu", "liczba_mandatow", "liczba_komitetow",
                              "liczba_kandydatow", "liczba_wyborcow", "granice")
-    writexl::write_xlsx(okregi2011, "dane_wybory/okregi2011.xlsx")
-    file.remove("dane_wybory/okregi.csv")
+    writexl::write_xlsx(okregi2011, paste0(path, "/dane_wybory/okregi2011.xlsx"))
+    file.remove(paste0(path, "/dane_wybory/okregi.csv"))
   } else if (rok == 2007){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2007])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(100)")
