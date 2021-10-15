@@ -71,15 +71,15 @@ pobierz_wyniki = function(rok, path = getwd()){
     for (i in 3:12) {
       wyniki2007[ , i] = as.numeric(stringr::str_replace_all(wyniki2007[ , i], "\\,", "\\."))
     }
-    dir.create("dane_wybory")
-    writexl::write_xlsx(wyniki2007, "dane_wybory/wyniki2007.xlsx")
+    dir.create(paste0(path, "/dane_wybory"))
+    writexl::write_xlsx(wyniki2007, paste0(path, "/dane_wybory/wyniki2007.xlsx"))
 
     plik_html = xml2::read_html(linki$link_okregi[linki$rok == 2007])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(82)")
     tabela_r = rvest::html_table(tabela_html, fill = TRUE, header = TRUE)
     okregi2007 = tabela_r[, c(1, 3, 4, 6)]
     okregi2007[ , 4] = as.numeric(stringr::str_replace_all(okregi2007[ , 4], pattern = "\\s+", replacement = ""))
-    writexl::write_xlsx(okregi2007, "dane_wybory/okregi2007.xlsx")
+    writexl::write_xlsx(okregi2007, paste0(path, "/dane_wybory/okregi2007.xlsx"))
   } else{
     stop("W podanym roku nie odbyły się wybory parlamentarne! Jako argument funkcji wpisz jedną z dat: 2007, 2011, 2015, 2019")
   }
