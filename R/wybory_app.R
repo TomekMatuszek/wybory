@@ -12,30 +12,30 @@
 #' pobierz_wyniki(2019)
 
 wybory_app = function(){
-ui <- fluidPage(
-  titlePanel("Old Faithful Geyser Data"),
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
+ui <- shiny::fluidPage(
+  shiny::titlePanel("Old Faithful Geyser Data"),
+  shiny::sidebarLayout(
+    shiny::sidebarPanel(
+      shiny::sliderInput("bins",
                   "Number of bins:",
                   min = 1,
                   max = 50,
                   value = 30)
     ),
-    mainPanel(
-      plotOutput("distPlot")
+    shiny::mainPanel(
+      shiny::plotOutput("distPlot")
     )
   )
 )
 
 server <- function(input, output) {
 
-  output$distPlot <- renderPlot({
+  output$distPlot <- shiny::renderPlot({
     x    <- faithful[, 2]
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     hist(x, breaks = bins, col = 'darkgray', border = 'white')
   })
 }
 
-shinyApp(ui = ui, server = server)
+shiny::shinyApp(ui = ui, server = server)
 }
