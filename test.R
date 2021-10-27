@@ -1,7 +1,7 @@
 library(wybory)
 devtools::load_all()
 
-pobierz_wyniki(2019)
+pobierz_wyniki(2007)
 wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx", 9, 11, 12, 14, 16, 17, 18)
 wybory_2015 = konstruktor_wynikow("dane_wybory/wyniki2015.xls", 9, 10, 13, 15, 16, 24)
 wybory_2011 = konstruktor_wynikow("dane_wybory/wyniki2011.xlsx", 3, 4, 5, 6, 7, 8, 9, 11)
