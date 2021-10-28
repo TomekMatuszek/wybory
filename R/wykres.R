@@ -30,6 +30,7 @@ wykres_wyniki = function(nazwa, ...){
   for (i in 1:ncol(okregi_wyniki_df)) {
     if (length(which(okregi_wyniki_df[ , i] > 0)) == 1){
       okregi_wyniki_df[ , i] = rep(0, times = 41)
+      kolumny = kolumny[kolumny != i]
     }
   }
   kol_komitet = c()
