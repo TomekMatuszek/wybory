@@ -48,7 +48,7 @@ wykres_wyniki = function(nazwa, ...){
   cols = c("orange", "black", "darkgreen", "blue", "red", "limegreen", "lightblue")
 
   ggplot2::ggplot(data = okregi_wyniki_df, ggplot2::aes(x = komitet, y = wynik, color = komitet)) +
-    ggplot2::geom_boxplot(color = "gray20") + ggplot2::geom_jitter(size = 1.5, alpha = 0.3, width = 0.3) +
+    ggplot2::geom_boxplot(color = "gray40") + ggplot2::geom_jitter(size = 1.5, alpha = 0.3, width = 0.3) +
     ggplot2::scale_color_manual(values = cols[1:length(kolumny)]) +
     ggplot2::labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia") +
     ggplot2::ggtitle("Rozkład wyników poszczególnych komitetów w okręgach wyborczych") +
