@@ -26,6 +26,9 @@ pobierz_wyniki = function(rok, path = getwd()){
                 paste0(path, "/dane_wybory/okregi2019.xlsx"))
     file.rename(paste0(path, "/dane_wybory/wyniki_gl_na_listy_po_okregach_proc_sejm.xlsx"),
                 paste0(path, "/dane_wybory/wyniki2019.xlsx"))
+
+    file.remove(paste0(path, "/wyniki2019.zip"))
+    file.remove(paste0(path, "/okregi2019.zip"))
   } else if (rok == 2015){
     download.file(linki$link_wyniki[linki$rok == 2015],
                   destfile = paste0(path, "/wyniki2015.zip"))
@@ -39,6 +42,9 @@ pobierz_wyniki = function(rok, path = getwd()){
                 paste0(path, "/dane_wybory/okregi2015.xlsx"))
     file.rename(paste0(path, "/dane_wybory/2015-gl-lis-okr-proc.xls"),
                 paste0(path, "/dane_wybory/wyniki2015.xls"))
+
+    file.remove(paste0(path, "/wyniki2015.zip"))
+    file.remove(paste0(path, "/okregi2015.zip"))
   } else if (rok == 2011){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(51)")
@@ -62,7 +68,9 @@ pobierz_wyniki = function(rok, path = getwd()){
     colnames(okregi2011) = c("nr_okregu", "liczba_mandatow", "liczba_komitetow",
                              "liczba_kandydatow", "liczba_wyborcow", "granice")
     writexl::write_xlsx(okregi2011, paste0(path, "/dane_wybory/okregi2011.xlsx"))
+
     file.remove(paste0(path, "/dane_wybory/okregi.csv"))
+    file.remove(paste0(path, "/okregi2011.zip"))
   } else if (rok == 2007){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2007])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(100)")
