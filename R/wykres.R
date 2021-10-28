@@ -13,20 +13,17 @@
 wykres_wyniki = function(nazwa, ...){
   if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
     okregi_wyniki_df = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
-    #for (i in 1:ncol(okregi_wyniki_df)) {
-     # for (j in 1:41) {
-      #  okregi_wyniki_df[j, i] = stringr::str_replace_all(okregi_wyniki_df[j, i], ",", ".")
-      #}
-    #}
+    if (any(stringr::str_detect(okregi_wyniki_df, "[0-9]+\\,{1}[0-9]+"))){
+      for (i in 1:ncol(okregi_wyniki_df)) {
+        for (j in 1:41) {
+          okregi_wyniki_df[j, i] = stringr::str_replace_all(okregi_wyniki_df[j, i], ",", ".")
+        }
+      }
+    }
     okregi_wyniki_df = sapply(okregi_wyniki_df, as.numeric)
     okregi_wyniki_df = as.data.frame(okregi_wyniki_df)
   } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
     okregi_wyniki_df = read.csv(nazwa, sep = ";")
-    for (i in 1:ncol(okregi_wyniki_df)) {
-      for (j in 1:41) {
-        okregi_wyniki_df[j, i] = stringr::str_replace_all(okregi_wyniki_df[j, i], ",", ".")
-      }
-    }
     okregi_wyniki_df = sapply(okregi_wyniki_df, as.numeric)
   }
   kolumny = c(...)
