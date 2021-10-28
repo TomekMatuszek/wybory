@@ -27,6 +27,11 @@ wykres_wyniki = function(nazwa, ...){
     okregi_wyniki_df = sapply(okregi_wyniki_df, as.numeric)
   }
   kolumny = c(...)
+  for (i in 1:ncol(okregi_wyniki_df)) {
+    if (length(which(okregi_wyniki_df[ , i] > 0)) == 1){
+      okregi_wyniki_df[ , i] = rep(0, times = 41)
+    }
+  }
   kol_komitet = c()
   for (i in 1:length(kolumny)) {
     kol_komitet = c(kol_komitet, rep(paste0("Kom", i), times = nrow(okregi_wyniki_df)))
