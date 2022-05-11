@@ -46,22 +46,5 @@ wybory_pl = function(..., frekwencja = 100){
                   "D'Hont" = dh,
                   "Sainte-Lague" = sl,
                   "Hare-Niemeyer" = hn)
-
-  # cols = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3",
-  #          "gold", "forestgreen", "darkorchid3", "cornflowerblue", "lightgoldenrod4")
-  #
-  # barplot(m3, beside = TRUE,
-  #         col = cols[1:length(wyniki)],
-  #         ylim = c(0,250), ylab = "Liczba mandatów",
-  #         xlab = "Metoda obliczania podziału mandatów",
-  #         border = cols[1:length(wyniki)],
-  #         main = "Podział mandatów w Sejmie")
-  # abline(h = 231, col = "red", lwd = 2, lty = 2)
-  # for (i in 1:length(wyniki)) {
-  #   abline(h = 460 * (wyniki[i] / 100),
-  #          col = cols[i], lwd = 1.5)
-  # }
-  # text(18, 240, "231", col = "red")
-
   m3
 }

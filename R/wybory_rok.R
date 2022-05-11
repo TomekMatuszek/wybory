@@ -59,21 +59,5 @@ wybory_rok = function(wyniki){
                           "D'Hont" = dh_sum,
                           "Sainte-Lague" = sl_sum,
                           "Hare-Niemeyer" = hn_sum)
-  cols = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3",
-           "gold", "forestgreen", "darkorchid3", "cornflowerblue", "lightgoldenrod4")
-
-  # barplot(wyniki_man, beside = TRUE,
-  #         col = cols[1:ncol(wyniki)],
-  #         ylim = c(0,250), ylab = "Liczba mandatów",
-  #         xlab = "Metoda obliczania podziału mandatów",
-  #         border = cols[1:ncol(wyniki)],
-  #         main = "Podział mandatów w Sejmie")
-  # abline(h = 231, col = "red", lwd = 2, lty = 2)
-  # for (i in 1:ncol(wyniki)) {
-  #   abline(h = 460 * (mean(wyniki[ , i]) / 100),
-  #          col = cols[i], lwd = 1.5)
-  # }
-  # text(18, 240, "231", col = "red")
-
   wyniki_man
 }

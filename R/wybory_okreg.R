@@ -42,22 +42,6 @@ wybory_okreg = function(..., okreg, frekwencja = 100){
   wyniki_man = system_dhonta %>%
     dplyr::left_join(system_sainte_lague, by = "Komitet") %>%
     dplyr::left_join(system_hare_niemeyer, by = "Komitet")
-  cols = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3",
-           "gold", "forestgreen", "darkorchid3", "cornflowerblue", "lightgoldenrod4")
-
-  # barplot(wyniki_man, beside = TRUE,
-  #         col = cols[1:length(wyniki)],
-  #         ylim = c(0, max(wyniki_man) + 2),
-  #         border = cols[1:length(wyniki)],
-  #         ylab = "Liczba mandatów", xlab = "Metoda obliczania podziału mandatów",
-  #         main = c("Podział mandatów w okręgu", okreg))
-  # for (i in 1:length(wyniki)) {
-  #   abline(h = okregi[okreg, 2] * (wyniki[i] / 100),
-  #          col = cols[i], lwd = 1.5)
-  # }
-  # nazwy_legenda = paste0("Kom", 1:length(wyniki))
-  # legend("top", nazwy_legenda, ncol = as.integer(length(wyniki) / 2) + 1,
-  #        fill = cols[1:length(wyniki)])
 
   wyniki_man
 }

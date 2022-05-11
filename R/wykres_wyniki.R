@@ -39,7 +39,8 @@ wykres_wyniki = function(nazwa, ...){
   okregi_wyniki_df = tidyr::pivot_longer(okregi_wyniki_df,
                                          cols = 2:ncol(okregi_wyniki_df),
                                          names_to = "komitet")
-  cols = c("orange", "black", "darkgreen", "blue", "red", "limegreen", "lightblue")
+  cols = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3",
+           "gold", "forestgreen", "darkorchid3", "cornflowerblue", "lightgoldenrod4")
 
   ggplot2::ggplot(data = okregi_wyniki_df, ggplot2::aes(x = komitet, y = value, color = komitet)) +
     ggplot2::geom_boxplot(color = "gray40") + ggplot2::geom_jitter(size = 1.5, alpha = 0.3, width = 0.3) +
