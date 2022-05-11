@@ -1,4 +1,5 @@
 hare_niemeyer = function(..., okreg, frekwencja = 100){
+  `%>%` = dplyr::`%>%`
   wyniki = c(...)
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
@@ -19,43 +20,32 @@ hare_niemeyer = function(..., okreg, frekwencja = 100){
     warning(paste("Suma poparcia wszystkich komitetów wynosi", sum(wyniki), "%. \n To oznacza, że", 100 - sum(wyniki), "% głosów została oddana nieważnych lub na komitety, które nie przekroczyły progu wyborczego."))
   }
 
-  liczba_glosow = c()
-  for (i in wyniki) {
-    liczba_glosow = c(liczba_glosow, i / 100 * (frekwencja / 100) * okregi[okreg, 1])
-  }
-  hn = c()
-  for (i in 1:length(liczba_glosow)) {
-    hn = c(hn, liczba_glosow[i] / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2])
-  }
-  mandaty_dane = c()
-  for (i in 1:length(wyniki)) {
-    mandaty_dane = c(mandaty_dane, as.integer(hn[i]))
-  }
-  mandaty_integer = matrix(mandaty_dane,
-                           ncol = 1, nrow = length(wyniki))
+  liczba_glosow = wyniki / 100 * (frekwencja / 100) * okregi[okreg, 1]
 
-  hn2 = c()
-  for (i in 1:length(hn)) {
-    hn2 = c(hn2, hn[i] - as.integer(hn[i]))
-  }
-  brak = okregi[okreg,2] - colSums(mandaty_integer)
-  if (brak >= length(wyniki)){
+  hn = liczba_glosow / ((frekwencja / 100) * okregi[okreg, 1]) * okregi[okreg, 2]
+  hn2 = floor(hn)
+  mandaty_integer = data.frame("Hare-Niemeyer" = hn2)
+  hn3 = hn - hn2
+
+  brak = okregi[okreg, 2] - sum(mandaty_integer)
+  while (brak >= length(wyniki[wyniki > 0])){
     mandaty_integer[which(hn > 0), ] = mandaty_integer[which(hn > 0), ] + 1
-    brak = okregi[okreg,2] - colSums(mandaty_integer)
+    brak = okregi[okreg, 2] - sum(mandaty_integer)
   }
-  n = length(hn2)
-  dod_mandaty = matrix(rep(0, times = length(wyniki)))
+
+  dod_mandaty = data.frame(dod = rep(0, times = length(wyniki)))
+  n = length(wyniki)
   if (sum(mandaty_integer) < okregi[okreg, 2]){
-    granica = sort(hn2, partial = n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1))[n - ((okregi[okreg, 2] - sum(mandaty_integer)) - 1)]
-    dod_mandaty = as.matrix(hn2 >= granica)
+    granica = sort(hn3, partial = n - (brak - 1))[n - (brak - 1)]
+    dod_mandaty = as.data.frame(hn3 >= granica)
   }
-  if (colSums(mandaty_integer) + colSums(dod_mandaty) > okregi[okreg, 2]){
-    a <<- 0
+  if (sum(mandaty_integer) + sum(dod_mandaty) > okregi[okreg, 2]){
+    a = 0
     for (i in 1:length(wyniki)) {
       for (j in 1:length(wyniki)) {
-        if (hn2[i] == hn2[j] && (i != j) == TRUE && any(c(hn2[i], hn2[j]) == granica) == TRUE){
+        if (hn3[i] == hn3[j] && (i != j) && any(c(hn3[i], hn3[j]) == granica)){
           dod_mandaty[max(c(i, j)), 1] = FALSE
-          a <<- a + 1
+          a = a + 1
         }
         if (a > 2){
           break
@@ -68,14 +58,10 @@ hare_niemeyer = function(..., okreg, frekwencja = 100){
   }
 
   mandaty_integer = cbind(mandaty_integer, dod_mandaty)
-  wynik_hn = matrix(rowSums(mandaty_integer), ncol = 1, nrow = length(wyniki))
+  mandaty_integer$`Hare-Niemeyer` = rowSums(mandaty_integer)
 
   cyfry_rzymskie = c("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")
-  colnames(wynik_hn) = "Hare-Niemeyer"
-  nazwy_wierszy = c()
-  for (i in 1:length(wyniki)) {
-    nazwy_wierszy = c(nazwy_wierszy, paste(cyfry_rzymskie[i], "Komitet"))
-  }
-  rownames(wynik_hn) = nazwy_wierszy
-  wynik_hn
+  mandaty_integer = data.frame("Komitet" = paste(cyfry_rzymskie[1:length(wyniki)], "Komitet"),
+                               "Hare-Niemeyer" = mandaty_integer$`Hare-Niemeyer`)
+  mandaty_integer
 }

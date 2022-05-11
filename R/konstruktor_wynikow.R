@@ -13,8 +13,8 @@
 #' @examples
 #' konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
 konstruktor_wynikow = function(nazwa, ...){
-  if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
-    okregi_wyniki = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+  if(stringr::str_detect(nazwa, ".xls")){
+    okregi_wyniki = readxl::read_excel(nazwa, .name_repair = "minimal")
     if (any(stringr::str_detect(okregi_wyniki, "[0-9]+\\,{1}[0-9]+"))){
       for (i in 1:ncol(okregi_wyniki)) {
         for (j in 1:41) {
@@ -24,7 +24,7 @@ konstruktor_wynikow = function(nazwa, ...){
     }
     okregi_wyniki = sapply(okregi_wyniki, as.numeric)
     okregi_wyniki = as.data.frame(okregi_wyniki)
-  } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
+  } else if(stringr::str_detect(nazwa, ".csv$")){
     okregi_wyniki = read.csv(nazwa, sep = ";")
     for (i in 1:ncol(okregi_wyniki)) {
       for (j in 1:41) {
@@ -36,17 +36,9 @@ konstruktor_wynikow = function(nazwa, ...){
     stop("Wybrano nie obslugiwany format pliku!")
   }
   kolumny = c(...)
-  wektor_wyniki = c()
-  for (i in kolumny) {
-    wektor_wyniki = c(wektor_wyniki, okregi_wyniki[ ,i])
-  }
-  okregi_wyniki = matrix(wektor_wyniki , nrow = 41, ncol = length(kolumny))
-  nazwy_kolumn = c()
-  for (i in 1:length(kolumny)) {
-    nazwy_kolumn = c(nazwy_kolumn, paste0("Kol", i))
-  }
-  colnames(okregi_wyniki) = nazwy_kolumn
+  okregi_wyniki = okregi_wyniki[ , kolumny]
+  okregi_wyniki = cbind(data.frame(Okreg = 1:41), okregi_wyniki)
+  colnames(okregi_wyniki)[-1] = paste0("Kol", 1:length(kolumny))
   okregi_wyniki[is.na(okregi_wyniki)] = 0
-  okregi_wyniki = structure(okregi_wyniki, class = "macierz_wynikow")
   okregi_wyniki
 }

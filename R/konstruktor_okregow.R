@@ -11,23 +11,25 @@
 #' @examples
 #' konstruktor_okregow("okregi2019.csv")
 konstruktor_okregow = function(nazwa){
-  if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".xls"){
-    okregi = readxl::read_excel(nazwa, skip = 1, col_names = FALSE, .name_repair = "minimal")
+  if(stringr::str_detect(nazwa, ".xls")){
+    okregi = readxl::read_excel(nazwa, .name_repair = "minimal")
     okregi = sapply(okregi, as.numeric)
     okregi = as.data.frame(okregi)
-  } else if(stringr::str_extract(nazwa, pattern = "[\\.]+[a-z]{3}") == ".csv"){
+  } else if(stringr::str_detect(nazwa, ".csv$")){
     okregi = read.csv(nazwa, sep = ";")
   } else{
     stop("Wybrano nie obslugiwany format pliku!")
   }
   rok = stringr::str_sub(stringr::str_extract(nazwa, pattern = "dane_wybory/.+"), start = 19, end = 22)
   if (rok == "2019" || rok == "2015"){
-    okregi <<- matrix(c(okregi[ ,7], okregi[ ,3]), ncol = 2, nrow = 41)
+    okregi <<- data.frame(`Liczba wyborców` = okregi[ ,7],
+                          `Liczba mandatów` = okregi[ ,3])
   } else if (rok == "2011"){
-    okregi <<- matrix(c(okregi[ ,5], okregi[ ,2]), ncol = 2, nrow = 41)
+    okregi <<- data.frame(`Liczba wyborców` = okregi[ ,5],
+                          `Liczba mandatów` = okregi[ ,2])
   } else if (rok == "2007"){
-    okregi <<- matrix(c(okregi[ ,4], okregi[ ,3]), ncol = 2, nrow = 41)
+    okregi <<- data.frame(`Liczba wyborców` = okregi[ ,4],
+                          `Liczba mandatów` = okregi[ ,3])
   }
-  colnames(okregi) <<- c("Liczba wyborców", "Liczba mandatów")
   message("Stworzono obiekt o nazwie 'okregi'")
 }

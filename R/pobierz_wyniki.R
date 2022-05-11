@@ -49,7 +49,7 @@ pobierz_wyniki = function(rok, path = getwd()){
     plik_html = xml2::read_html(linki$link_wyniki[linki$rok == 2011])
     tabela_html = rvest::html_node(plik_html, "table.wikitable:nth-child(51)")
     tabela_r = rvest::html_table(tabela_html, fill = TRUE, header = TRUE)
-    colnames(tabela_r) = tabela_r[1 ,]
+    colnames(tabela_r) = tabela_r[1,]
     wyniki2011 = tabela_r[2:42, ]
     wyniki2011$Okręg = as.numeric(stringr::str_sub(wyniki2011$Okręg, start = 1, end = 2))
     for (i in 3:13) {

@@ -14,6 +14,7 @@
 #' @examples
 #' wybory_okreg(30, 29, 10, 7, 6, okreg = 4)
 wybory_okreg = function(..., okreg, frekwencja = 100){
+  `%>%` = dplyr::`%>%`
   wyniki = c(...)
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
@@ -34,30 +35,29 @@ wybory_okreg = function(..., okreg, frekwencja = 100){
     warning(paste("Suma poparcia wszystkich komitetów wynosi", sum(wyniki), "%. \n To oznacza, że", 100 - sum(wyniki), "% głosów została oddana nieważnych lub na komitety, które nie przekroczyły progu wyborczego."))
   }
 
-  system_dhonta = as.matrix(dhont(wyniki, okreg = okreg))
-  system_sainte_lague = as.matrix(sainte_lague(wyniki, okreg = okreg))
-  system_hare_niemeyer = as.matrix(hare_niemeyer(wyniki, okreg = okreg))
+  system_dhonta = dhont(wyniki, okreg = okreg)
+  system_sainte_lague = sainte_lague(wyniki, okreg = okreg)
+  system_hare_niemeyer = hare_niemeyer(wyniki, okreg = okreg)
 
-  wyniki_man = cbind(system_dhonta, system_sainte_lague, system_hare_niemeyer)
+  wyniki_man = system_dhonta %>%
+    dplyr::left_join(system_sainte_lague, by = "Komitet") %>%
+    dplyr::left_join(system_hare_niemeyer, by = "Komitet")
   cols = c("tomato", "black", "limegreen", "dodgerblue3", "violetred3",
            "gold", "forestgreen", "darkorchid3", "cornflowerblue", "lightgoldenrod4")
 
-  barplot(wyniki_man, beside = TRUE,
-          col = cols[1:length(wyniki)],
-          ylim = c(0, max(wyniki_man) + 2),
-          border = cols[1:length(wyniki)],
-          ylab = "Liczba mandatów", xlab = "Metoda obliczania podziału mandatów",
-          main = c("Podział mandatów w okręgu", okreg))
-  for (i in 1:length(wyniki)) {
-    abline(h = okregi[okreg, 2] * (wyniki[i] / 100),
-           col = cols[i], lwd = 1.5)
-  }
-  nazwy_legenda = c()
-  for (i in 1:length(wyniki)) {
-    nazwy_legenda = c(nazwy_legenda, paste0("Kom", i))
-  }
-  legend("top", nazwy_legenda, ncol = as.integer(length(wyniki) / 2) + 1,
-         fill = cols[1:length(wyniki)])
+  # barplot(wyniki_man, beside = TRUE,
+  #         col = cols[1:length(wyniki)],
+  #         ylim = c(0, max(wyniki_man) + 2),
+  #         border = cols[1:length(wyniki)],
+  #         ylab = "Liczba mandatów", xlab = "Metoda obliczania podziału mandatów",
+  #         main = c("Podział mandatów w okręgu", okreg))
+  # for (i in 1:length(wyniki)) {
+  #   abline(h = okregi[okreg, 2] * (wyniki[i] / 100),
+  #          col = cols[i], lwd = 1.5)
+  # }
+  # nazwy_legenda = paste0("Kom", 1:length(wyniki))
+  # legend("top", nazwy_legenda, ncol = as.integer(length(wyniki) / 2) + 1,
+  #        fill = cols[1:length(wyniki)])
 
   wyniki_man
 }
