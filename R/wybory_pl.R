@@ -45,6 +45,7 @@ wybory_pl = function(..., frekwencja = 100){
   m3 = data.frame("Komitet" = komitety,
                   "D'Hont" = dh,
                   "Sainte-Lague" = sl,
-                  "Hare-Niemeyer" = hn)
+                  "Hare-Niemeyer" = hn,
+                  "poparcie" = c(...))
   m3
 }

@@ -20,8 +20,7 @@ wykres_wyniki("dane_wybory/wyniki2015.xls", 9, 10, 13, 15, 16, 24)
 wykres_wyniki("dane_wybory/wyniki2011.xlsx", 3, 4, 5, 6, 7, 8, 9, 11)
 wykres_wyniki("dane_wybory/wyniki2007.xlsx", 3, 4, 5, 6, 8, 10)
 
-wyniki_2019 = wybory_rok(wybory_2019)
-wykres_mandaty(wyniki_2019, wybory_2019)
+wykres_mandaty(wyniki_2019)
 wykres_mandaty(wyniki_pl)
 wykres_mandaty(wyniki4)
 

@@ -20,9 +20,11 @@ wybory_rok = function(wyniki){
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
   }
+  wyniki_kraj = c()
   for (i in 2:ncol(wyniki)) {
-    wynik_kraj = sum(wyniki[ , i] / 100 * okregi[i, 1]) / sum(okregi[i, 1]) * 100
-    if (mean(wyniki[ , i]) < 5 && length(which(wyniki[ , i] > 0)) > 1){
+    wynik_kraj = sum(wyniki[, i] / 100 * okregi[, 1]) / sum(okregi[, 1]) * 100
+    wyniki_kraj = c(wyniki_kraj, wynik_kraj)
+    if (wynik_kraj < 5 && length(which(wyniki[ , i] > 0)) > 1){
       wyniki[ , i] = rep(0, times = 41)
     }
   }
@@ -58,6 +60,7 @@ wybory_rok = function(wyniki){
   wyniki_man = data.frame("Komitet" = komitety,
                           "D'Hont" = dh_sum,
                           "Sainte-Lague" = sl_sum,
-                          "Hare-Niemeyer" = hn_sum)
+                          "Hare-Niemeyer" = hn_sum,
+                          "poparcie" = round(wyniki_kraj, 2))
   wyniki_man
 }

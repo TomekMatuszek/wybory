@@ -42,6 +42,7 @@ wybory_okreg = function(..., okreg, frekwencja = 100){
   wyniki_man = system_dhonta %>%
     dplyr::left_join(system_sainte_lague, by = "Komitet") %>%
     dplyr::left_join(system_hare_niemeyer, by = "Komitet")
+  wyniki_man$poparcie = c(...)
 
   wyniki_man
 }

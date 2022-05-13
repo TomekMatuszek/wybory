@@ -9,25 +9,20 @@
 #'
 #' @examples
 #' wykres_mandaty(wyniki_2019)
-wykres_mandaty = function(wyniki, wyniki_raw = NA){
+wykres_mandaty = function(wyniki){
   `%>%` = dplyr::`%>%`
+  liczba_mandatow = sum(wyniki[, 2])
   wyniki_longer = tidyr::pivot_longer(wyniki, cols = 2:4,
                                       names_to = "metoda")
-  if (is.data.frame(wyniki_raw)){
-    wyniki_raw_longer = tidyr::pivot_longer(wyniki_raw, cols = 2:ncol(wyniki_raw),
-                                            names_to = "komitet")
-    wyniki_raw_longer = wyniki_raw_longer %>% dplyr::group_by(komitet) %>%
-      dplyr::summarise(mean = mean(value) / 100)
-  }
 
-  p = ggplot2::ggplot(wyniki_longer, ggplot2::aes(x = metoda, y = value, fill = Komitet)) +
-    ggplot2::geom_bar(position = "dodge", stat = "identity")
-  if (sum(wyniki[, -1]) / 3 == 460){
+  p = ggplot2::ggplot(wyniki_longer) +
+    ggplot2::geom_bar(ggplot2::aes(x = metoda, y = value, fill = Komitet),
+                      position = "dodge", stat = "identity") +
+    ggplot2::geom_bar(ggplot2::aes(x = metoda, y = poparcie / 100 * liczba_mandatow, fill = Komitet),
+                      colour = "black", alpha = 0, show.legend = FALSE,
+                      position = "dodge", stat = "identity")
+  if (liczba_mandatow == 460){
     p = p + ggplot2::geom_hline(yintercept = 230, size = 1.5, colour = "red")
-  }
-  if (is.data.frame(wyniki_raw)){
-    p = p + ggplot2::geom_hline(data = wyniki_raw_longer, size = 1, show.legend = FALSE,
-                                ggplot2::aes(yintercept = 460 * mean, colour = komitet))
   }
   p
 }
