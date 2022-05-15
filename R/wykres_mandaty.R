@@ -30,7 +30,7 @@ wykres_mandaty = function(wyniki){
     ggplot2::scale_y_continuous(sec.axis = ggplot2::sec_axis(~. / liczba_mandatow * 100, name = "poparcie w %")) +
     ggplot2::scale_alpha_manual(name = NULL, values = rep(1, nrow(wyniki)),
                                 guide = ggplot2::guide_legend(
-                                  override.aes = list(colour = "black", fill = NA)
+                                  override.aes = list(colour = "black", fill = "gray", alpha = 0.2)
                                 )) +
     ggplot2::labs(title = "Podział mandatów w zależności od metody",
                   x = "metoda podziału",
@@ -39,8 +39,8 @@ wykres_mandaty = function(wyniki){
                   subtitle = paste("Liczba mandatów:", liczba_mandatow)) +
     ggplot2::theme_bw() +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, face = "bold"),
-                   plot.subtitle = ggplot2::element_text(hjust = 0.5))
-  #+ ggplot2::scale_fill_manual(values = palette.colors(palette = "Set1"))
+                   plot.subtitle = ggplot2::element_text(hjust = 0.5)) +
+    ggplot2::scale_fill_manual(values = palette.colors(palette = "Set1"))
   if (liczba_mandatow == 460){
     p = p + ggplot2::geom_hline(yintercept = 230, size = 1.5, colour = "red") +
       ggplot2::annotate("text", x = 3.25, y = 238, label = "większość (230)", colour = "red")
