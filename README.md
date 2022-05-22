@@ -1,5 +1,7 @@
 # Pakiet 'wybory'
 
+## Uwaga! Pakiet jest w trakcie przebudowy i może nie działać poprawnie lub zawierać zmodyfikowane funkcjonalności. Nowa dokumentacja zostanie stworzona po zakończeniu wszystkich modyfikacji.
+
 ## Spis treści
 * [Instalacja](#Instalacja)
 * [Wstęp i pobranie danych](#Wstęp-i-pobranie-danych)
@@ -13,7 +15,6 @@
 Aby pobrać ten pakiet, użyj poniższych poleceń aby połączyć się z repozytorium GitHub.
 
 ```r
-install.packages("remotes")
 remotes::install_github("TomekMatuszek/wybory")
 library(wybory)
 ```
