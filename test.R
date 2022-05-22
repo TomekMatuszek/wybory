@@ -1,26 +1,27 @@
 library(wybory)
 devtools::load_all()
 
-pobierz_wyniki(2019)
+pobierz_wyniki(2015)
 konstruktor_okregow("dane_wybory/okregi2019.xlsx")
 wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx", 9, 11, 12, 14, 16, 17, 18)
-wybory_2015 = konstruktor_wynikow("dane_wybory/wyniki2015.xls", 9, 10, 13, 15, 16, 24)
+wybory_2015 = konstruktor_wynikow("dane_wybory/wyniki2015.xls", 9, 10, 11, 12, 13, 15, 16, 24)
 wybory_2011 = konstruktor_wynikow("dane_wybory/wyniki2011.xlsx", 3, 4, 5, 6, 7, 8, 9, 11)
 wybory_2007 = konstruktor_wynikow("dane_wybory/wyniki2007.xlsx", 3, 4, 5, 6, 8, 10)
+
+wykres_wyniki(wybory_2019)
+wykres_wyniki(wybory_2015)
+wykres_wyniki(wybory_2011)
+wykres_wyniki(wybory_2007)
 
 wyniki4 = wybory_okreg(30, 29, 10, 7, 6, 5, okreg = 4)
 wyniki_pl = wybory_pl(33, 24, 13, 9, 7, 4, 3)
 wyniki_2019 = wybory_rok(wybory_2019)
-wybory_rok(wybory_2015)
-wybory_rok(wybory_2011)
-wybory_rok(wybory_2007)
-
-wykres_wyniki("dane_wybory/wyniki2019.xlsx", 9, 11, 12, 14, 16, 17, 18)
-wykres_wyniki("dane_wybory/wyniki2015.xls", 9, 10, 13, 15, 16, 24)
-wykres_wyniki("dane_wybory/wyniki2011.xlsx", 3, 4, 5, 6, 7, 8, 9, 11)
-wykres_wyniki("dane_wybory/wyniki2007.xlsx", 3, 4, 5, 6, 8, 10)
+wyniki_2015 = wybory_rok(wybory_2015)
+wyniki_2011 = wybory_rok(wybory_2011)
+wyniki_2007 = wybory_rok(wybory_2007)
 
 wykres_mandaty(wyniki_2019)
+wykres_mandaty(wyniki_2015)
 wykres_mandaty(wyniki_pl)
 wykres_mandaty(wyniki4)
 
