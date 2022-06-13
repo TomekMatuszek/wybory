@@ -13,13 +13,14 @@
 #'
 #' @examples
 #' wybory_pl(30, 29, 10, 7, 6)
-wybory_pl = function(..., frekwencja = 100){
+wybory_pl = function(..., koalicje = NULL, frekwencja = 100){
   `%>%` = dplyr::`%>%`
   wyniki = c(...)
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
   }
-  wyniki[wyniki < 5] = 0
+
+  wyniki[(!(wyniki %in% wyniki[koalicje]) & wyniki < 5) | (wyniki %in% wyniki[koalicje] & wyniki < 8)] = 0
   cyfry_rzymskie = c("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")
   komitety = paste(cyfry_rzymskie[1:length(wyniki)], "Komitet")
 
