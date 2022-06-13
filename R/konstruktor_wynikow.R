@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
-konstruktor_wynikow = function(nazwa, ...){
+konstruktor_wynikow = function(nazwa, kolumny){
   if(stringr::str_detect(nazwa, ".xls")){
     okregi_wyniki = readxl::read_excel(nazwa, .name_repair = "minimal")
     if (any(stringr::str_detect(okregi_wyniki, "[0-9]+\\,{1}[0-9]+"))){
@@ -35,10 +35,13 @@ konstruktor_wynikow = function(nazwa, ...){
   } else{
     stop("Wybrano nie obslugiwany format pliku!")
   }
-  kolumny = c(...)
+
+  if(is.null(names(kolumny))){
+    names(kolumny) = paste0("Kol", 1:length(kolumny))
+  }
   okregi_wyniki = okregi_wyniki[ , kolumny]
   okregi_wyniki = cbind(data.frame(Okreg = 1:41), okregi_wyniki)
-  colnames(okregi_wyniki)[-1] = paste0("Kol", 1:length(kolumny))
+  colnames(okregi_wyniki)[-1] = names(kolumny)
   okregi_wyniki[is.na(okregi_wyniki)] = 0
   okregi_wyniki
 }

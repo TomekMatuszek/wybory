@@ -57,7 +57,7 @@ wybory_rok = function(wyniki){
   }
   hn_sum = rowSums(hn_mx[, -1], na.rm = TRUE)
 
-  wyniki_man = data.frame("Komitet" = komitety,
+  wyniki_man = data.frame("Komitet" = factor(colnames(wyniki)[-1], levels = colnames(wyniki)[-1]),
                           "D'Hont" = dh_sum,
                           "Sainte-Lague" = sl_sum,
                           "Hare-Niemeyer" = hn_sum,

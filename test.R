@@ -1,12 +1,17 @@
 library(wybory)
 devtools::load_all()
 
-pobierz_wyniki(2015)
+pobierz_wyniki(2019)
 konstruktor_okregow("dane_wybory/okregi2019.xlsx")
-wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx", 9, 11, 12, 14, 16, 17, 18)
-wybory_2015 = konstruktor_wynikow("dane_wybory/wyniki2015.xls", 9, 10, 11, 12, 13, 15, 16, 24)
-wybory_2011 = konstruktor_wynikow("dane_wybory/wyniki2011.xlsx", 3, 4, 5, 6, 7, 8, 9, 11)
-wybory_2007 = konstruktor_wynikow("dane_wybory/wyniki2007.xlsx", 3, 4, 5, 6, 8, 10)
+wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx",
+                                  c("PO" = 9, "Konf" = 11, "PSL" = 12, "PIS" = 14,
+                                    "Lewica" = 16, "BS" = 17, "MN" = 18))
+wybory_2015 = konstruktor_wynikow("dane_wybory/wyniki2015.xls",
+                                  c(9, 10, 11, 12, 13, 15, 16, 24))
+wybory_2011 = konstruktor_wynikow("dane_wybory/wyniki2011.xlsx",
+                                  c(3, 4, 5, 6, 7, 8, 9, 11))
+wybory_2007 = konstruktor_wynikow("dane_wybory/wyniki2007.xlsx",
+                                  c(3, 4, 5, 6, 8, 10))
 
 wykres_wyniki(wybory_2019)
 wykres_wyniki(wybory_2015)
@@ -31,3 +36,4 @@ wykres_mandaty(wyniki4)
 ?wybory_pl
 ?wybory_rok
 ?wykres_wyniki
+?wykres_mandaty
