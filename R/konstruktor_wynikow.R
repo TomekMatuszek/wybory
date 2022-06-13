@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
-konstruktor_wynikow = function(nazwa, kolumny){
+konstruktor_wynikow = function(nazwa, kolumny, koalicje = NULL){
   if(stringr::str_detect(nazwa, ".xls")){
     okregi_wyniki = readxl::read_excel(nazwa, .name_repair = "minimal")
     if (any(stringr::str_detect(okregi_wyniki, "[0-9]+\\,{1}[0-9]+"))){
@@ -39,8 +39,12 @@ konstruktor_wynikow = function(nazwa, kolumny){
   if(is.null(names(kolumny))){
     names(kolumny) = paste0("Kol", 1:length(kolumny))
   }
-  kom_index = kolumny %in% which(stringr::str_detect(n, "KOALICYJNY") | stringr::str_detect(n, "Koalicyjny"))
-  names(kolumny)[kom_index] = paste0(names(kolumny)[kom_index], "(K)")
+  if(is.null(koalicje)){
+    k_index = kolumny[kolumny %in% which(stringr::str_detect(colnames(okregi_wyniki), "KOALICYJNY") | stringr::str_detect(colnames(okregi_wyniki), "Koalicyjny"))]
+  } else{
+    k_index = koalicje
+  }
+  names(kolumny)[kolumny %in% k_index] = paste0(names(kolumny)[kolumny %in% k_index], "(K)")
 
   okregi_wyniki = okregi_wyniki[ , kolumny]
   okregi_wyniki = cbind(data.frame(Okreg = 1:41), okregi_wyniki)

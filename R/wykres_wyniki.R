@@ -22,7 +22,7 @@ wykres_wyniki = function(wyniki){
   ggplot2::ggplot(data = wyniki_longer, ggplot2::aes(x = komitet, y = value, color = komitet)) +
     ggplot2::coord_cartesian(xlim = c(1, ncol(wyniki) - 1), clip = "off") +
     ggplot2::geom_boxplot(color = "gray40") + ggplot2::geom_jitter(size = 2, alpha = 0.5, width = 0.3) +
-    ggplot2::scale_color_manual(values = palette.colors(palette = "Set1")[-6]) +
+    ggplot2::scale_color_manual(values = c(palette.colors(palette = "Set1")[-6], palette.colors(palette = "Dark2"))) +
     ggplot2::labs(x = "Komitet", y = "Wynik w %", color = "Komitet/partia") +
     ggplot2::ggtitle("Rozkład wyników poszczególnych komitetów w okręgach wyborczych") +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +

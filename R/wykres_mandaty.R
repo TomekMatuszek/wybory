@@ -50,7 +50,7 @@ wykres_mandaty = function(wyniki){
                    plot.background = ggplot2::element_rect(fill = "gray80"),
                    legend.background = ggplot2::element_blank(),
                    legend.key = ggplot2::element_blank()) +
-    ggplot2::scale_fill_manual(values = palette.colors(palette = "Set1")[-6])
+    ggplot2::scale_fill_manual(values = c(palette.colors(palette = "Set1")[-6], palette.colors(palette = "Dark2")))
   if (liczba_mandatow == 460){
     p = p + ggplot2::geom_hline(yintercept = 230, size = 1.5, colour = "red") +
       ggplot2::annotate("text", x = 4, y = 232, label = "większość (230)", colour = "red", fontface = "bold")

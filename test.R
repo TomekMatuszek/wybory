@@ -1,7 +1,7 @@
 library(wybory)
 devtools::load_all()
 
-pobierz_wyniki(2019)
+pobierz_wyniki(2007)
 konstruktor_okregow("dane_wybory/okregi2019.xlsx")
 wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx",
                                   c("KO" = 9, "Konf" = 11, "PSL" = 12, "PIS" = 14,
