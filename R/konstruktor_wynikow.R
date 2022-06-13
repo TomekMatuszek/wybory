@@ -39,6 +39,9 @@ konstruktor_wynikow = function(nazwa, kolumny){
   if(is.null(names(kolumny))){
     names(kolumny) = paste0("Kol", 1:length(kolumny))
   }
+  kom_index = kolumny %in% which(stringr::str_detect(n, "KOALICYJNY") | stringr::str_detect(n, "Koalicyjny"))
+  names(kolumny)[kom_index] = paste0(names(kolumny)[kom_index], "(K)")
+
   okregi_wyniki = okregi_wyniki[ , kolumny]
   okregi_wyniki = cbind(data.frame(Okreg = 1:41), okregi_wyniki)
   colnames(okregi_wyniki)[-1] = names(kolumny)

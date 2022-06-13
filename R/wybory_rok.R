@@ -22,9 +22,10 @@ wybory_rok = function(wyniki){
   }
   wyniki_kraj = c()
   for (i in 2:ncol(wyniki)) {
+    prog = ifelse(stringr::str_detect(colnames(wyniki)[i], "(K)"), 8, 5)
     wynik_kraj = sum(wyniki[, i] / 100 * okregi[, 1]) / sum(okregi[, 1]) * 100
     wyniki_kraj = c(wyniki_kraj, wynik_kraj)
-    if (wynik_kraj < 5 && length(which(wyniki[ , i] > 0)) > 1){
+    if (wynik_kraj < prog && length(which(wyniki[ , i] > 0)) > 1){
       wyniki[ , i] = rep(0, times = 41)
     }
   }
