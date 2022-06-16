@@ -44,7 +44,11 @@ konstruktor_wynikow = function(nazwa, kolumny, koalicje = NULL){
   } else{
     k_index = koalicje
   }
-  names(kolumny)[kolumny %in% k_index] = paste0(names(kolumny)[kolumny %in% k_index], "(K)")
+  if(is.character(koalicje)){
+    names(kolumny)[names(kolumny) %in% k_index] = paste0(names(kolumny)[names(kolumny) %in% k_index], "(K)")
+  } else if(is.numeric(koalicje)){
+    names(kolumny)[kolumny %in% k_index] = paste0(names(kolumny)[kolumny %in% k_index], "(K)")
+  }
 
   okregi_wyniki = okregi_wyniki[ , kolumny]
   okregi_wyniki = cbind(data.frame(Okreg = 1:41), okregi_wyniki)
