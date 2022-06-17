@@ -15,6 +15,8 @@ wybory_2007 = konstruktor_wynikow("dane_wybory/wyniki2007.xlsx",
                                   c(3, 4, 5, 6, 8, 10))
 
 wykres_wyniki(wybory_2019, type = "boxplot")
+wykres_wyniki(wybory_2019, type = "violin")
+wykres_wyniki(wybory_2019, type = "dotplot")
 wykres_wyniki(wybory_2015)
 wykres_wyniki(wybory_2011)
 wykres_wyniki(wybory_2007)
