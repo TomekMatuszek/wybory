@@ -16,6 +16,7 @@ wykres_mandaty = function(wyniki){
                                       names_to = "metoda")
   wyniki_longer$pop_man = round(wyniki_longer$poparcie / 100 * liczba_mandatow, 1)
   wyniki_longer$diff = wyniki_longer$value - wyniki_longer$pop_man
+  wyniki_longer$repr = wyniki_longer$poparcie * ifelse(wyniki_longer$value > 0, 1, 0)
 
   p = ggplot2::ggplot(wyniki_longer) +
     ggplot2::geom_bar(ggplot2::aes(x = metoda, y = value, fill = Komitet, alpha = "uzyskany wynik"),
@@ -53,7 +54,8 @@ wykres_mandaty = function(wyniki){
     ggplot2::scale_fill_manual(values = c(palette.colors(palette = "Set1")[-6], palette.colors(palette = "Dark2")))
   if (liczba_mandatow == 460){
     p = p + ggplot2::geom_hline(yintercept = 230, size = 1.5, colour = "red") +
-      ggplot2::annotate("text", x = 4, y = 232, label = "większość (230)", colour = "red", fontface = "bold")
+      ggplot2::annotate("text", x = 4, y = 232, label = "większość (230)", colour = "red", fontface = "bold") +
+      ggplot2::labs(caption = paste("Reprezentowanych wyborców:", sum(wyniki_longer$repr) / 3, "%"))
   }
   p
 }

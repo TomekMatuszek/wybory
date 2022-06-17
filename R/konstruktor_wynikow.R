@@ -44,9 +44,9 @@ konstruktor_wynikow = function(nazwa, kolumny, koalicje = NULL){
   } else{
     k_index = koalicje
   }
-  if(is.character(koalicje)){
+  if(is.character(k_index)){
     names(kolumny)[names(kolumny) %in% k_index] = paste0(names(kolumny)[names(kolumny) %in% k_index], "(K)")
-  } else if(is.numeric(koalicje)){
+  } else if(is.numeric(k_index)){
     names(kolumny)[kolumny %in% k_index] = paste0(names(kolumny)[kolumny %in% k_index], "(K)")
   }
 
