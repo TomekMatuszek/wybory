@@ -16,7 +16,11 @@ wykres_mandaty = function(wyniki){
                                       names_to = "metoda")
   wyniki_longer$pop_man = round(wyniki_longer$poparcie / 100 * liczba_mandatow, 1)
   wyniki_longer$diff = wyniki_longer$value - wyniki_longer$pop_man
-  wyniki_longer$repr = wyniki_longer$poparcie * ifelse(wyniki_longer$value > 0, 1, 0)
+  wyniki$repr = wyniki$poparcie * ifelse(wyniki$D.Hont > 0, 1, 0)
+
+  metody_wskazniki = wyniki_longer %>% dplyr::group_by(metoda) %>%
+    dplyr::summarise(frag = sum((value / liczba_mandatow) ^ 2))
+  print(metody_wskazniki)
 
   p = ggplot2::ggplot(wyniki_longer) +
     ggplot2::geom_bar(ggplot2::aes(x = metoda, y = value, fill = Komitet, alpha = "uzyskany wynik"),
@@ -34,7 +38,7 @@ wykres_mandaty = function(wyniki){
                        size = 1 / (nrow(wyniki) / 20), color = "black", label.size = NA, alpha = 0.9,
                        label.padding = grid::unit(0.1, "lines"), label.r = grid::unit(0, "lines")) +
     ggplot2::coord_cartesian(xlim = c(1, 3), clip = "off") +
-    ggplot2::scale_x_discrete(labels = c("D'Honta", "Sainte-Lague", "Hare-Nimeyera")) +
+    ggplot2::scale_x_discrete(labels = c("D'Honta", "Hare-Nimeyera", "Sainte-Lague")) +
     ggplot2::scale_y_continuous(sec.axis = ggplot2::sec_axis(~. / liczba_mandatow * 100, name = "poparcie w %")) +
     ggplot2::scale_alpha_manual(name = NULL, values = rep(1, nrow(wyniki)),
                                 guide = ggplot2::guide_legend(
@@ -55,7 +59,7 @@ wykres_mandaty = function(wyniki){
   if (liczba_mandatow == 460){
     p = p + ggplot2::geom_hline(yintercept = 230, size = 1.5, colour = "red") +
       ggplot2::annotate("text", x = 4, y = 232, label = "większość (230)", colour = "red", fontface = "bold") +
-      ggplot2::labs(caption = paste("Reprezentowanych wyborców:", sum(wyniki_longer$repr) / 3, "%"))
+      ggplot2::labs(caption = paste("Reprezentowanych wyborców:", sum(wyniki$repr), "%"))
   }
   p
 }

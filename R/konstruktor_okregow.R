@@ -23,13 +23,16 @@ konstruktor_okregow = function(nazwa){
   rok = stringr::str_sub(stringr::str_extract(nazwa, pattern = "dane_wybory/.+"), start = 19, end = 22)
   if (rok == "2019" || rok == "2015"){
     okregi <<- data.frame(`Liczba wyborców` = okregi[ ,7],
-                          `Liczba mandatów` = okregi[ ,3])
+                          `Liczba mandatów` = okregi[ ,3],
+                          `Numer` = 1:nrow(okregi))
   } else if (rok == "2011"){
     okregi <<- data.frame(`Liczba wyborców` = okregi[ ,5],
-                          `Liczba mandatów` = okregi[ ,2])
+                          `Liczba mandatów` = okregi[ ,2],
+                          `Numer` = 1:nrow(okregi))
   } else if (rok == "2007"){
     okregi <<- data.frame(`Liczba wyborców` = okregi[ ,4],
-                          `Liczba mandatów` = okregi[ ,3])
+                          `Liczba mandatów` = okregi[ ,3],
+                          `Numer` = 1:nrow(okregi))
   }
   message("Stworzono obiekt o nazwie 'okregi'")
 }
