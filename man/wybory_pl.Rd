@@ -4,22 +4,22 @@
 \alias{wybory_pl}
 \title{Obliczanie rozkladu mandatow przy rownomiernym poparciu w skali kraju}
 \usage{
-wybory_pl(..., frekwencja = 100)
+wybory_pl(..., koalicje = NULL, frekwencja = 100)
 }
 \arguments{
 \item{...}{wyniki wyborcze komitetow w \% (max. 10 komitetów)}
 
+\item{koalicje}{wektor zawierajacy numery komitetow (w kolejnosci podawania), ktore startowaly jako KKW}
+
 \item{frekwencja}{frekwencja wyborcza, domyslnie ustawiona na 100\%}
 }
 \value{
-macierz z wynikami oraz wykres obrazujacy wyniki
+ramka danych z wynikami
 }
 \description{
-Funkcja tworzy macierz zawierajacą informacje o liczbie mandatow poselskich przyznanych
+Funkcja tworzy macierzramke danych zawierajaca informacje o liczbie mandatow poselskich przyznanych
 komitetom wg trzech roznych metod w przypadku gdyby wszystkie komitety otrzymaly rownomierne poparcie w skali kraju.
-Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
 }
 \examples{
-wybory_pl(30, 29, 10, 7, 6)
+wybory_pl(34.5, 25.4, 9.6, 9.4, 5.5, 4.7, koalicje = c(2))
 }

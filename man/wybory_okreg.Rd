@@ -14,12 +14,11 @@ wybory_okreg(..., okreg, frekwencja = 100)
 \item{frekwencja}{frekwencja wyborcza, domyslnie ustawiona na 100\%}
 }
 \value{
-macierz z wynikami oraz wykres obrazujacy wyniki
+ramka danych z wynikami
 }
 \description{
-Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow z okregu przyznanych
-komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
+Funkcja tworzy ramke danych zawierajaca informacje o liczbie mandatow z okregu przyznanych
+komitetom wg trzech roznych metod.
 }
 \examples{
 wybory_okreg(30, 29, 10, 7, 6, okreg = 4)

@@ -9,7 +9,7 @@ pobierz_wyniki(rok, path = getwd())
 \arguments{
 \item{rok}{rok, w którym odbyły się wybory parlamentarne (do wyboru: 2007, 2011, 2015, 2019)}
 
-\item{path}{folder, w którym mają zostać zapisane pobrane pliki}
+\item{path}{folder, w którym mają zostać zapisane pobrane pliki, domyślnie jest to aktualny folder roboczy}
 }
 \value{
 pobrane pliki w folderze 'dane_wybory'

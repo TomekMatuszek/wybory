@@ -1,15 +1,13 @@
-#' Obliczanie rozkladu mandatow dla wyników z danego roku wg różnych metod
+#' Obliczanie rozkladu mandatow dla wynikow z danego roku wg roznych metod
 #'
-#' @description Funkcja tworzy macierz zawierajacą informacje o liczbie mandatow poselskich przyznanych
+#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow poselskich przyznanych
 #' komitetom wg trzech roznych metod w wyborach parlamentarnych wybranego roku.
-#' Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-#' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
-#' Do poprawnego działania funkcji wymagane jest pobranie arkusza z wynikami wyborów z PKW oraz
+#' Do poprawnego dzialania funkcji wymagane jest pobranie arkusza z wynikami wyborow z PKW oraz
 #' przetworzenie ich przy pomocy funkcji 'konstruktor_wynikow'.
 #'
-#' @param wyniki obiekt klasy 'macierz_wynikow' tworzony przez funkcję 'konstruktor_wynikow'
+#' @param wyniki ramka danych z wynikami stworzona przez funkcję 'konstruktor_wynikow'
 #'
-#' @return macierz z wynikami oraz wykres obrazujacy wyniki
+#' @return ramka danych z wynikami
 #' @export
 #'
 #' @examples

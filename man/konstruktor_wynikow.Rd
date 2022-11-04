@@ -2,23 +2,25 @@
 % Please edit documentation in R/konstruktor_wynikow.R
 \name{konstruktor_wynikow}
 \alias{konstruktor_wynikow}
-\title{Konstruktor macierzy wyników wyborów}
+\title{Funkcja przetwarzajaca dane o wynikach wyborow}
 \usage{
-konstruktor_wynikow(nazwa, ...)
+konstruktor_wynikow(nazwa, kolumny, koalicje = NULL)
 }
 \arguments{
 \item{nazwa}{sciezka do pliku CSV lub XLS pobranego ze strony PKW}
 
-\item{...}{numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow}
+\item{kolumny}{wektor z numerami kolumn, w ktorych znajduja sie interesujace nas komitety,
+moze zawierac rowniez nazwy tych komitetow jako nazwy elementow wektora}
 }
 \value{
-macierz klasy 'macierz_wynikow'
+ramka danych
 }
 \description{
-Funkcja tworzy macierz, w ktorej każda kolumna zawiera wyniki wybranych
-komitetów wyborczych. Każdy wiersz to inny okręg. Stworzona macierz może zostać później
-użyta w funkcji wybory_rok w celu symulacji podziału mandatów.
+Funkcja tworzy ramke danych, w ktorej kazda kolumna zawiera wyniki wybranych
+komitetow wyborczych. Kazdy wiersz to inny okreg. Stworzona ramka danych moze zostac pozniej
+uzyta w funkcji wybory_rok w celu symulacji podzialu mandatow oraz funkcji wykres_wyniki w celach wizualizacji wynikow.
 }
 \examples{
-konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
+wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx",
+c("KO" = 9, "Konf" = 11, "PSL" = 12, "PIS" = 14, "Lewica" = 16, "BS" = 17, "MN" = 18))
 }

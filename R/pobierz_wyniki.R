@@ -4,7 +4,7 @@
 #' dla podanego przez użytkownika roku, a także z danymi o okręgach wyborczych
 #'
 #' @param rok rok, w którym odbyły się wybory parlamentarne (do wyboru: 2007, 2011, 2015, 2019)
-#' @param path folder, w którym mają zostać zapisane pobrane pliki
+#' @param path folder, w którym mają zostać zapisane pobrane pliki, domyślnie jest to aktualny folder roboczy
 #'
 #' @return pobrane pliki w folderze 'dane_wybory'
 #' @export

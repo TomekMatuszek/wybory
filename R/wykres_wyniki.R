@@ -2,14 +2,15 @@
 #'
 #' @description Funkcja ta tworzy wykres pudelkowy obrazujacy rozklad wynikow poszczegolnych komitetow wyborczych w okregach
 #'
-#' @param nazwa sciezka do pliku z wynikami wyborow pobranego ze strony PKW
-#' @param ... numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
+#' @param wyniki ramka danych z wynikami wyborow stworzona przy pomocy funkcji konstruktor_wynikow
+#' @param type typ wykresu, jaki chcemy stworzyc
+#' dostepne typy: boxplot, violin, dotplot, scatter
 #'
 #' @return wykres pudelkowy obrazujacy rozklad wynikow partii w okregach
 #' @export
 #'
 #' @examples
-#' wykres_wyniki("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
+#' wykres_wyniki(wybory_2019, type = "boxplot")
 
 wykres_wyniki = function(wyniki, type = "boxplot"){
   `%>%` = dplyr::`%>%`

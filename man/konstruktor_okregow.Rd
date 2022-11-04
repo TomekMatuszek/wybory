@@ -2,7 +2,7 @@
 % Please edit documentation in R/konstruktor_okregow.R
 \name{konstruktor_okregow}
 \alias{konstruktor_okregow}
-\title{Konstruktor macierzy okregow wyborczych}
+\title{Konstruktor ramki danych z informacjami o okregach wyborczych}
 \usage{
 konstruktor_okregow(nazwa)
 }
@@ -10,12 +10,12 @@ konstruktor_okregow(nazwa)
 \item{nazwa}{sciezka do pliku CSV lub XLS pobranego ze strony PKW}
 }
 \value{
-macierz o nazwie 'okregi'
+ramka danych o nazwie 'okregi'
 }
 \description{
-Funkcja tworzy macierz, w ktorej znajduja sie informacje dotyczace
+Funkcja tworzy ramke danych, w ktorej znajduja sie informacje dotyczace
 okregow wyborczych - liczby ludnosci oraz dostepnych mandatow.
 }
 \examples{
-konstruktor_okregow("okregi2019.csv")
+konstruktor_okregow("dane_wybory/okregi2019.xlsx")
 }

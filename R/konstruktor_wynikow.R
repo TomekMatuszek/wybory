@@ -1,17 +1,19 @@
-#' Konstruktor macierzy wyników wyborów
+#' Funkcja przetwarzajaca dane o wynikach wyborow
 #'
-#' @description Funkcja tworzy macierz, w ktorej każda kolumna zawiera wyniki wybranych
-#' komitetów wyborczych. Każdy wiersz to inny okręg. Stworzona macierz może zostać później
-#' użyta w funkcji wybory_rok w celu symulacji podziału mandatów.
+#' @description Funkcja tworzy ramke danych, w ktorej kazda kolumna zawiera wyniki wybranych
+#' komitetow wyborczych. Kazdy wiersz to inny okreg. Stworzona ramka danych moze zostac pozniej
+#' uzyta w funkcji wybory_rok w celu symulacji podzialu mandatow oraz funkcji wykres_wyniki w celach wizualizacji wynikow.
 #'
 #' @param nazwa sciezka do pliku CSV lub XLS pobranego ze strony PKW
-#' @param ... numery kolumn w ktorych znajduja sie wyniki interesujacych nas komitetow
+#' @param kolumny wektor z numerami kolumn, w ktorych znajduja sie interesujace nas komitety,
+#' moze zawierac rowniez nazwy tych komitetow jako nazwy elementow wektora
 #'
-#' @return macierz klasy 'macierz_wynikow'
+#' @return ramka danych
 #' @export
 #'
 #' @examples
-#' konstruktor_wynikow("sejm_wyniki_2019.xlsx", 9, 11, 12, 14, 16)
+#' wybory_2019 = konstruktor_wynikow("dane_wybory/wyniki2019.xlsx",
+#' c("KO" = 9, "Konf" = 11, "PSL" = 12, "PIS" = 14, "Lewica" = 16, "BS" = 17, "MN" = 18))
 konstruktor_wynikow = function(nazwa, kolumny, koalicje = NULL){
   if(stringr::str_detect(nazwa, ".xls")){
     okregi_wyniki = readxl::read_excel(nazwa, .name_repair = "minimal")

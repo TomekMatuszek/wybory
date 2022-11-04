@@ -1,18 +1,17 @@
 #' Obliczanie rozkladu mandatow przy rownomiernym poparciu w skali kraju
 #'
-#' @description Funkcja tworzy macierz zawierajacą informacje o liczbie mandatow poselskich przyznanych
+#' @description Funkcja tworzy macierzramke danych zawierajaca informacje o liczbie mandatow poselskich przyznanych
 #' komitetom wg trzech roznych metod w przypadku gdyby wszystkie komitety otrzymaly rownomierne poparcie w skali kraju.
-#' Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-#' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
 #'
 #' @param ... wyniki wyborcze komitetow w % (max. 10 komitetów)
+#' @param koalicje wektor zawierajacy numery komitetow (w kolejnosci podawania), ktore startowaly jako KKW
 #' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
 #'
-#' @return macierz z wynikami oraz wykres obrazujacy wyniki
+#' @return ramka danych z wynikami
 #' @export
 #'
 #' @examples
-#' wybory_pl(30, 29, 10, 7, 6)
+#' wybory_pl(34.5, 25.4, 9.6, 9.4, 5.5, 4.7, koalicje = c(2))
 wybory_pl = function(..., koalicje = NULL, frekwencja = 100){
   `%>%` = dplyr::`%>%`
   wyniki = c(...)

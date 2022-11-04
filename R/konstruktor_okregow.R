@@ -1,15 +1,15 @@
-#' Konstruktor macierzy okregow wyborczych
+#' Konstruktor ramki danych z informacjami o okregach wyborczych
 #'
-#' @description Funkcja tworzy macierz, w ktorej znajduja sie informacje dotyczace
+#' @description Funkcja tworzy ramke danych, w ktorej znajduja sie informacje dotyczace
 #' okregow wyborczych - liczby ludnosci oraz dostepnych mandatow.
 #'
 #' @param nazwa sciezka do pliku CSV lub XLS pobranego ze strony PKW
 #'
-#' @return macierz o nazwie 'okregi'
+#' @return ramka danych o nazwie 'okregi'
 #' @export
 #'
 #' @examples
-#' konstruktor_okregow("okregi2019.csv")
+#' konstruktor_okregow("dane_wybory/okregi2019.xlsx")
 konstruktor_okregow = function(nazwa){
   if(stringr::str_detect(nazwa, ".xls")){
     okregi = readxl::read_excel(nazwa, .name_repair = "minimal")

@@ -1,10 +1,11 @@
-#' Wykres wizualizujący wyniki wyborow
+#' Wykres wizualizujacy wyniki wyborow w zaleznosci od wybranej metody podzialu mandatow
 #'
-#' @description Nowa wersja wykresu słupkowego z wynikami w podziale na mateody
+#' @description Funkcja zwraca wykres przedstawiajacy rozklad mandatow na podstawie wynikow wyborow w zaleznosci od wybranej metody podzialu mandatow.
+#' Kolorowe slupki przedstawiaja liczbe uzyskanych mandatow, a czarne slupki bez wypelnienia obrazuja ile mandatow przyslugiwaloby komitetowi gdyby zastosowac czysto proporcjonalny podzial mandatow.
 #'
-#' @param wyniki obiekt z wynikami podziału mandatów
+#' @param wyniki obiekt z wynikami podziału mandatów powstaly w wyniku funkcji wybory_rok
 #'
-#' @return wykres słupkowy
+#' @return wykres
 #' @export
 #'
 #' @examples

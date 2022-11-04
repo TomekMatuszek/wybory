@@ -2,22 +2,20 @@
 % Please edit documentation in R/wybory_rok.R
 \name{wybory_rok}
 \alias{wybory_rok}
-\title{Obliczanie rozkladu mandatow dla wyników z danego roku wg różnych metod}
+\title{Obliczanie rozkladu mandatow dla wynikow z danego roku wg roznych metod}
 \usage{
 wybory_rok(wyniki)
 }
 \arguments{
-\item{wyniki}{obiekt klasy 'macierz_wynikow' tworzony przez funkcję 'konstruktor_wynikow'}
+\item{wyniki}{ramka danych z wynikami stworzona przez funkcję 'konstruktor_wynikow'}
 }
 \value{
-macierz z wynikami oraz wykres obrazujacy wyniki
+ramka danych z wynikami
 }
 \description{
-Funkcja tworzy macierz zawierajacą informacje o liczbie mandatow poselskich przyznanych
+Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow poselskich przyznanych
 komitetom wg trzech roznych metod w wyborach parlamentarnych wybranego roku.
-Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow w skali kraju.
-Do poprawnego działania funkcji wymagane jest pobranie arkusza z wynikami wyborów z PKW oraz
+Do poprawnego dzialania funkcji wymagane jest pobranie arkusza z wynikami wyborow z PKW oraz
 przetworzenie ich przy pomocy funkcji 'konstruktor_wynikow'.
 }
 \examples{

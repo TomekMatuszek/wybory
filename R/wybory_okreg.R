@@ -1,14 +1,13 @@
 #' Obliczanie rozkladu mandatow w okregu
 #'
-#' @description Funkcja tworzy macierz zawierajaca informacje o liczbie mandatow z okregu przyznanych
-#' komitetom wg trzech roznych metod. Wyswietlany także jest wykres zawierajacy wspomniane informacje,
-#' a takze wizualizujacy realne poparcie w okregu w odniesieniu do dostepnych mandatow.
+#' @description Funkcja tworzy ramke danych zawierajaca informacje o liczbie mandatow z okregu przyznanych
+#' komitetom wg trzech roznych metod.
 #'
 #' @param ... wyniki wyborcze komitetow w % (max. 10 komitetów)
 #' @param okreg liczba z przedzialu (1, 41); numer okregu, w ktorym chcemy obliczyc rozklad mandatow
 #' @param frekwencja frekwencja wyborcza, domyslnie ustawiona na 100%
 #'
-#' @return macierz z wynikami oraz wykres obrazujacy wyniki
+#' @return ramka danych z wynikami
 #' @export
 #'
 #' @examples
