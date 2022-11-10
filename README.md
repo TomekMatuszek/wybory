@@ -77,6 +77,14 @@ Wygenerowany za pomoca funkcji `wykres_mandaty` wykres obrazuje rozkład mandat�
 
 ![](wyboryrok_wykres.png)
 
+Możliwe jest również przekazanie obiektu `wybory_2019` do funkcji `wybory_okreg`, aby porównać metody podziału mandatów dla danego roku na poziomie okręgów.
+
+
+```r
+wyniki4 = wybory_okreg(wybory_2019, okreg = 4)
+wykres_mandaty(wyniki4)
+```
+
 ## Wykresy eksploracyjne
 Używając funkcji `wykres_wyniki` możemy stworzyć wykresy wizualizujące wyniki wyborów w podziale na okręgi wyborcze. Dostępne typy wykresów to:
 - **boxplot** - rozkład wyników w okręgach dla każdego komitetu

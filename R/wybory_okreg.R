@@ -15,20 +15,20 @@
 wybory_okreg = function(..., okreg, frekwencja = 100){
   `%>%` = dplyr::`%>%`
   wyniki = c(...)
+  if (is.numeric(okreg) == FALSE || round(okreg, 0) != okreg || okreg > 41 || okreg < 1){
+    stop("Wybierz numer okręgu z przedziału liczb całkowitych (1,41)!")
+  }
+  if (class(wyniki[1]) == "list"){
+    wyniki = wyniki %>% as.data.frame() %>% .[okreg, 2:length(wyniki)] %>% as.numeric()
+  }
   if (exists("okregi") == FALSE){
     stop("Nie zostal stworzony obiekt 'okregi'! Uzyj najpierw funkcji 'konstruktor_okregow'.")
-  }
-  if (is.numeric(wyniki) == FALSE){
-    stop("Wprowadzane argumenty muszą być liczbami!")
   }
   if (frekwencja > 100 || frekwencja < 0){
     stop("Frekwencja musi być liczbą z przedziału (0,100)!")
   }
   if (round(sum(wyniki)) > 100){
     stop("Suma poparcia poszczególnych komitetów jest wyższa niż 100%!")
-  }
-  if (is.numeric(okreg) == FALSE || round(okreg, 0) != okreg || okreg > 41 || okreg < 1){
-    stop("Wybierz numer okręgu z przedziału liczb całkowitych (1,41)!")
   }
   if (sum(wyniki) < 90){
     warning(paste("Suma poparcia wszystkich komitetów wynosi", sum(wyniki), "%. \n To oznacza, że", 100 - sum(wyniki), "% głosów została oddana nieważnych lub na komitety, które nie przekroczyły progu wyborczego."))
@@ -41,7 +41,11 @@ wybory_okreg = function(..., okreg, frekwencja = 100){
   wyniki_man = system_dhonta %>%
     dplyr::left_join(system_sainte_lague, by = "Komitet") %>%
     dplyr::left_join(system_hare_niemeyer, by = "Komitet")
-  wyniki_man$poparcie = c(...)
+  if (class(c(...)[1]) == "list"){
+    wyniki_man$poparcie = wyniki
+  } else{
+    wyniki_man$poparcie = c(...)
+  }
 
   wyniki_man
 }

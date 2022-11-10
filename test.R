@@ -23,6 +23,7 @@ wykres_wyniki(wybory_2011)
 wykres_wyniki(wybory_2007)
 
 wyniki4 = wybory_okreg(30, 29, 10, 7, 6, 5, okreg = 4)
+wyniki4 = wybory_okreg(wybory_2019, okreg = 4)
 wyniki_pl = wybory_pl(34.5, 25.4, 9.6, 9.4, 5.5, 4.7, koalicje = c(2))
 wyniki_2019 = wybory_rok(wybory_2019)
 wyniki_2015 = wybory_rok(wybory_2015)
